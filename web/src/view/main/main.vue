@@ -39,6 +39,7 @@ import TagsNav from './components/tags-nav'
 import User from './components/user'
 import Fullscreen from './components/fullscreen'
 import Language from './components/language'
+import Cookies from 'js-cookie'
 import { mapMutations, mapActions } from 'vuex'
 import { getNewTagList, getNextName } from '@/libs/util'
 import minLogo from '@/assets/images/logo-min.jpg'
@@ -129,27 +130,44 @@ export default {
     this.setBreadCrumb(this.$route.matched)
     // 设置初始语言
     this.setLocal(this.$i18n.locale)
-    // 文档提示
-    this.$Notice.open({
-      title: '想快速上手，去看文档吧',
-      duration: 0,
-      render: (h) => {
-        return h('p', {
-          style: {
-            fontSize: '13px'
-          }
-        }, [
-          '点击',
-          h('a', {
-            attrs: {
-              href: 'https://lison16.github.io/iview-admin-doc/#/',
-              target: '_blank'
-            }
-          }, 'iview-admin2.0文档'),
-          '快速查看'
-        ])
+
+    // 问候信息相关
+    if (!Cookies.get('hasGreet')) {
+      let now = new Date();
+      let hour = now.getHours();
+      let greetingWord = {
+        title: '',
+        words: ''
+      };
+      let userName = Cookies.get('user');
+      if (hour > 5 && hour < 6) {
+        greetingWord = {title: '凌晨好~' + userName, words: '早起的鸟儿有虫吃~'};
+      } else if (hour >= 6 && hour < 9) {
+        greetingWord = {title: '早上好~' + userName, words: '来一杯咖啡开启美好的一天~'};
+      } else if (hour >= 9 && hour < 12) {
+        greetingWord = {title: '上午好~' + userName, words: '工作要加油哦~'};
+      } else if (hour >= 12 && hour < 14) {
+        greetingWord = {title: '中午好~' + userName, words: '午饭要吃饱~'};
+      } else if (hour >= 14 && hour < 17) {
+        greetingWord = {title: '下午好~' + userName, words: '下午也要活力满满哦~'};
+      } else if (hour >= 17 && hour < 19) {
+        greetingWord = {title: '傍晚好~' + userName, words: '下班没事问候下爸妈吧~'};
+      } else if (hour >= 19 && hour < 21) {
+        greetingWord = {title: '晚上好~' + userName, words: '工作之余品一品书香吧~'};
+      } else {
+        greetingWord = {title: '深夜好~' + userName, words: '夜深了，注意休息哦~'};
       }
-    })
+      this.$Notice.config({
+        top: 130
+      });
+      this.$Notice.info({
+        title: greetingWord.title,
+        desc: greetingWord.words,
+        duration: 4,
+        name: 'greeting'
+      });
+      Cookies.set('hasGreet', 1);
+    }
   }
 }
 </script>

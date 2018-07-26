@@ -43,31 +43,6 @@ export default [
     ]
   },
   {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/join',
-    name: 'join',
-    component: Main,
-    children: [
-      {
-        path: 'join_page',
-        name: 'join_page',
-        meta: {
-          icon: '_qq',
-          title: 'QQ群'
-        },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
-  {
     path: '/components',
     name: 'components',
     meta: {
@@ -133,104 +108,54 @@ export default [
     ]
   },
   {
-    path: '/update',
-    name: 'update',
-    meta: {
-      icon: 'upload',
-      title: '数据上传'
-    },
+    path: '/coal',
+    name: 'coal',
     component: Main,
     children: [
       {
-        path: 'update_table_page',
-        name: 'update_table_page',
+        path: 'coal_page',
+        name: 'coal_page',
         meta: {
-          icon: 'document-text',
-          title: '上传Csv'
+          icon: '_qq',
+          title: '煤炭价格管理'
         },
-        component: () => import('@/view/update/update-table.vue')
-      },
-      {
-        path: 'update_paste_page',
-        name: 'update_paste_page',
-        meta: {
-          icon: 'clipboard',
-          title: '粘贴表格数据'
-        },
-        component: () => import('@/view/update/update-paste.vue')
+        component: () => import('@/view/join-page.vue')
       }
     ]
   },
   {
-    path: '/directive',
-    name: 'directive',
-    meta: {
-      hide: true
-    },
+    path: '/lantan',
+    name: 'lantan',
     component: Main,
     children: [
       {
-        path: 'directive_page',
-        name: 'directive_page',
+        path: 'lantan_page',
+        name: 'lantan_page',
         meta: {
-          icon: 'ios-navigate',
-          title: '指令'
+          icon: '_qq',
+          title: '兰炭价格管理'
         },
-        component: () => import('@/view/directive/directive.vue')
+        component: () => import('@/view/join-page.vue')
       }
     ]
   },
   {
-    path: '/multilevel',
-    name: 'multilevel',
-    meta: {
-      icon: 'arrow-graph-up-right',
-      title: '多级菜单'
-    },
+    path: '/user',
+    name: 'user',
     component: Main,
     children: [
       {
-        path: 'level_2_1',
-        name: 'level_2_1',
+        path: 'user_page',
+        name: 'user_page',
         meta: {
-          icon: 'arrow-graph-up-right',
-          title: '二级-1'
+          icon: '_qq',
+          title: '用户管理'
         },
-        component: () => import('@/view/multilevel/level-2-1.vue')
-      },
-      {
-        path: 'level_2_2',
-        name: 'level_2_2',
-        meta: {
-          access: ['super_admin'],
-          icon: 'arrow-graph-up-right',
-          showAlways: true,
-          title: '二级-2'
-        },
-        component: parentView,
-        children: [
-          {
-            path: 'level_2_2_1',
-            name: 'level_2_2_1',
-            meta: {
-              icon: 'arrow-graph-up-right',
-              title: '三级'
-            },
-            component: () => import('@/view/multilevel/level-2-2/level-3-1.vue')
-          }
-        ]
-      },
-      {
-        path: 'level_2_3',
-        name: 'level_2_3',
-        meta: {
-          icon: 'arrow-graph-up-right',
-          title: '二级-3'
-        },
-        component: () => import('@/view/multilevel/level-2-3.vue')
-      },
+        component: () => import('@/view/join-page.vue')
+      }
     ]
   },
+  
   {
     path: '/401',
     name: 'error_401',
