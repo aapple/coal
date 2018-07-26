@@ -1,5 +1,5 @@
 <configuration>
-    <include coalPrice="org/springframework/boot/logging/logback/base.xml"/>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <jmxConfigurator/>
 
     <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
