@@ -1,6 +1,7 @@
 package com.young.coal.business.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.young.coal.business.exception.CoalException;
 import com.young.coal.business.model.RequestParams;
 import com.young.coal.business.model.SuccessTip;
 import com.young.coal.business.model.User;
@@ -37,9 +38,7 @@ public class UserController {
 
         SuccessTip successTip = new SuccessTip();
         if(result == null){
-            successTip.setCode(0);
-            successTip.setMessage("用户名或者密码错误！");
-            return successTip;
+            throw new CoalException("用户名或者密码错误！");
         }
 
         String userJsonString = JSON.toJSONString(result);

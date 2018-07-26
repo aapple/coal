@@ -57,7 +57,7 @@ class httpRequest {
       }
       return data
     }, (error) => {
-      Message.error('服务内部错误')
+      Message.error(error.response.data.message)
       // 对响应错误做点什么
       return Promise.reject(error)
     })
