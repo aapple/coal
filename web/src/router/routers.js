@@ -119,7 +119,7 @@ export default [
           icon: '_qq',
           title: '煤炭价格管理'
         },
-        component: () => import('@/view/join-page.vue')
+        component: () => import('@/view/coal/coal.vue')
       }
     ]
   },
@@ -155,7 +155,7 @@ export default [
       }
     ]
   },
-  
+
   {
     path: '/401',
     name: 'error_401',
