@@ -26,35 +26,12 @@ public class CoalPriceService {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public void add(CoalPrice coalPrice) {
-
-        coalPrice.setResourceId(UUID.randomUUID().toString().replace("-", ""));
-        coalPrice.setCreateDate(new Date());
-
-        mongoTemplate.save(coalPrice);
-    }
-
-
-    public void delete(CoalPrice coalPrice) {
-
-        Query query = Query.query(Criteria.where("resourceId").is(coalPrice.getResourceId()));
-        mongoTemplate.remove(query, CoalPrice.class);
-    }
-
     public ResponseData query(CoalPrice coalPrice) {
 
         Query query = new Query();
 
-        if(StringUtils.isNotEmpty(coalPrice.getType())){
-            query.addCriteria(Criteria.where("type").regex(coalPrice.getType()));
-        }
-
-        if(StringUtils.isNotEmpty(coalPrice.getImageType())){
-            query.addCriteria(Criteria.where("imageType").regex(coalPrice.getImageType()));
-        }
-
-        if(StringUtils.isNotEmpty(coalPrice.getDescription())){
-            query.addCriteria(Criteria.where("description").regex(coalPrice.getDescription(), "i"));
+        if(StringUtils.isNotEmpty(coalPrice.getFactoryName())){
+            query.addCriteria(Criteria.where("factoryName").regex(coalPrice.getFactoryName()));
         }
 
         Pageable pageable = new PageRequest(coalPrice.getPage(), coalPrice.getPageSize());
@@ -74,8 +51,27 @@ public class CoalPriceService {
 
     public void update(CoalPrice coalPrice) {
 
-        Update update = new Update().set("description", coalPrice.getDescription());
-        Query queryTask = new Query(Criteria.where("resourceId").is(coalPrice.getResourceId()));
-        mongoTemplate.updateFirst(queryTask, update, CoalPrice.class);
+        Update update = new Update();
+        update.set("factoryName", coalPrice.getFactoryName());
+        update.set("productType", coalPrice.getProductType());
+        update.set("productTypeDetail", coalPrice.getProductTypeDetail());
+        update.set("price", coalPrice.getPrice());
+        update.set("coalWashing", coalPrice.getCoalWashing());
+        update.set("graded", coalPrice.getGraded());
+        update.set("state", coalPrice.getState());
+        update.set("coal_fareliang", coalPrice.getCoal_fareliang());
+        update.set("coal_quanshuifen", coalPrice.getCoal_quanshuifen());
+        update.set("coal_liufen", coalPrice.getCoal_liufen());
+        update.set("coal_huifafen", coalPrice.getCoal_huifafen());
+        update.set("coal_huifen", coalPrice.getCoal_huifen());
+        update.set("coal_gudingtan", coalPrice.getCoal_gudingtan());
+        update.set("updateDate", new Date());
+        update.setOnInsert("createDate", new Date());
+
+        Query query = new Query(Criteria.where("factoryName").is(coalPrice.getFactoryName()));
+        query.addCriteria(Criteria.where("productType").is(coalPrice.getProductType()));
+        query.addCriteria(Criteria.where("productTypeDetail").is(coalPrice.getProductTypeDetail()));
+
+        mongoTemplate.upsert(query, update, CoalPrice.class);
     }
 }

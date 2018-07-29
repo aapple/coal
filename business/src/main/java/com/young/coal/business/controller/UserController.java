@@ -1,13 +1,13 @@
 package com.young.coal.business.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.young.coal.business.exception.CoalException;
+import com.young.coal.business.common.exception.CoalException;
 import com.young.coal.business.model.RequestParams;
 import com.young.coal.business.model.SuccessTip;
 import com.young.coal.business.model.User;
 import com.young.coal.business.service.UserService;
-import com.young.coal.business.utils.Base64Utils;
-import com.young.coal.business.utils.RequestUtils;
+import com.young.coal.business.common.utils.Base64Utils;
+import com.young.coal.business.common.utils.RequestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

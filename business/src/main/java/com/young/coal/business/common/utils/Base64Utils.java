@@ -1,4 +1,4 @@
-package com.young.coal.business.utils;
+package com.young.coal.business.common.utils;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

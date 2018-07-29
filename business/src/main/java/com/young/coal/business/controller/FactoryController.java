@@ -17,13 +17,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by yaobin on 2017/11/7.
  */
 @Controller
-@RequestMapping("/coalPrice")
-public class CoalPriceController {
+@RequestMapping("/factory")
+public class FactoryController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private CoalPriceService coalPriceService;
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public Object add(@RequestBody CoalPrice coalPrice){
+
+        //coalPriceService.add(coalPrice);
+
+        return new SuccessTip();
+    }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Object delete(@RequestBody CoalPrice coalPrice){
+
+        //coalPriceService.delete(coalPrice);
+
+        return new SuccessTip();
+    }
 
     @RequestMapping("/update")
     @ResponseBody

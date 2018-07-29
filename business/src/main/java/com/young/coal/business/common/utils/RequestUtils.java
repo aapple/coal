@@ -1,4 +1,4 @@
-package com.young.coal.business.utils;
+package com.young.coal.business.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.young.coal.business.model.User;
