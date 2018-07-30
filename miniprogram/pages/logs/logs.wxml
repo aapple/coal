@@ -1,0 +1,175 @@
+
+<wxs module="filter" src="../../utils/date.wxs"></wxs>
+
+<!--logs.wxml-->
+<view style='padding:10px'>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">产品种类</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value='{{detail.productType.name}}' class="weui-input" disabled="true" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">产品价格</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input style='color:red;' value='{{detail.price}}元/吨' class="weui-input" disabled="true"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">价格类型</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value='{{priceType}}' class="weui-input" disabled="true" />
+      </view>
+    </view>
+    <view wx:if="{{detail.factory.factoryType==1}}" class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">是否水洗</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value="{{detail.coalWashing?'水洗':'不水洗'}}" class="weui-input" disabled="true" />
+      </view>
+    </view>
+    <view wx:if="{{detail.factory.factoryType==1}}" class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">是否过筛</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value="{{detail.graded?'过筛':'不过筛'}}" class="weui-input" disabled="true" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">变更幅度</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value="{{detail.priceDiff>0?'涨': ''}}{{detail.priceDiff<0?'降': ''}}{{detail.priceDiff?detail.priceDiff+' 元/吨': '无'}}" class="weui-input" readonly="readonly" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">更新时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value='{{filter.timestampToTime(detail.createdTime)}}' class="weui-input" disabled="true" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="icon-box" style='padding:10px 0 10px 50px;background-color:#fff;margin:0 10px 10px 10px'>
+  <icon type="success" size="70"></icon>
+  <view class="icon-box__ctn">
+    <view class="icon-box__title">{{detail.factory.name}}</view>
+    <view wx:if="{{detail.factory.factoryType==2}}">
+    <view class="icon-box__desc">联系人：{{detail.factory.salerCallPerson}}</view>
+    <view class="icon-box__desc">联系电话：
+    <span style="color:blue">{{detail.factory.salerCallNumber}}</span></view>
+    </view>
+
+    <view wx:if="{{detail.factory.factoryType==1 && detail.priceOwnerType==1}}">
+    <view class="icon-box__desc">联系人：{{detail.factory.onwerCallPerson}}</view>
+    <view class="icon-box__desc">联系电话：<span style="color:blue">{{detail.factory.onwerCallNumber}}</span></view>
+    </view>
+
+    <view wx:if="{{detail.factory.factoryType==1 && detail.priceOwnerType==2}}">
+    <view class="icon-box__desc">业务专员：{{detail.factory.salerCallPerson}}</view>
+    <view class="icon-box__desc">销售电话：<span style="color:blue">{{detail.factory.salerCallNumber}}</span></view>
+    </view>
+  </view>
+</view>   
+
+<view wx:if="{{detail.factory.factoryType==1}}">
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">发热量(大卡)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coal_fareliang}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">全水分(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coal_quanshuifen}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">硫份(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coal_liufen}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">挥发份(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coal_huifafen}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">灰分(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coal_huifen}}</view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{detail.factory.factoryType==2}}">
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">含硫(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coke_hanliu}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">固定碳(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coke_hantan}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">挥发份(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coke_huifafen}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">灰分(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coke_huifen}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">全水(%)</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coke_shuifen}}</view>
+    </view>
+  </view>
+</view>
+
+<button bindtap='gotoCall'
+style='height:50px;position:fixed;bottom:0px;left:0px;width:100%;border-radius:0px;' class="weui-btn" type="primary">立即联系购买</button>

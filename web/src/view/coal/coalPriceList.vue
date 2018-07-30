@@ -24,7 +24,7 @@
           {title: '价格', key: 'price', editable: true},
           {title: '更新时间', key: 'updateDate', editable: true},
           {
-            title: 'Action',
+            title: '操作',
             key: 'action',
             width: 150,
             align: 'center',
@@ -60,7 +60,8 @@
       },
       newProductType () {
         this.$router.push({
-          name: 'coalPrice_page'
+          name: 'coalPrice_page',
+          params: {}
         })
       }
     },

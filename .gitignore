@@ -22,3 +22,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/E:/
+miniprogram/.DS_Store
+miniprogram/pages/.DS_Store
