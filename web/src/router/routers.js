@@ -113,49 +113,28 @@ export default [
     component: Main,
     children: [
       {
-        path: 'coal_page',
-        name: 'coal_page',
+        path: 'coalPriceList_page',
+        name: 'coalPriceList_page',
         meta: {
           icon: '_qq',
           title: '煤炭价格管理'
         },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
-  {
-    path: '/lantan',
-    name: 'lantan',
-    component: Main,
-    children: [
+        component: () => import('@/view/coal/coalPriceList.vue')
+      },
       {
-        path: 'lantan_page',
-        name: 'lantan_page',
+        path: 'coalPrice_page',
+          name: 'coalPrice_page',
         meta: {
-          icon: '_qq',
-          title: '兰炭价格管理'
+        icon: '_qq',
+          title: '煤价更新',
+          hideInMenu: true,
+          notCache: true
         },
-        component: () => import('@/view/join-page.vue')
+        component: () => import('@/view/coal/coalPrice.vue')
       }
     ]
   },
-  {
-    path: '/user',
-    name: 'user',
-    component: Main,
-    children: [
-      {
-        path: 'user_page',
-        name: 'user_page',
-        meta: {
-          icon: '_qq',
-          title: '用户管理'
-        },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
-  
+
   {
     path: '/401',
     name: 'error_401',

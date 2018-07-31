@@ -1,4 +1,4 @@
-package com.young.coal.business.exception;
+package com.young.coal.business.common.exception;
 
 
 public class CoalException extends RuntimeException {

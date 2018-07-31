@@ -1,8 +1,8 @@
-package com.young.coal.business.aop;
+package com.young.coal.business.common.aop;
 
 
 
-import com.young.coal.business.exception.CoalException;
+import com.young.coal.business.common.exception.CoalException;
 import com.young.coal.business.model.SuccessTip;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.young.coal.business.aop;
+package com.young.coal.business.common.aop;
 
 import com.alibaba.fastjson.JSON;
 

@@ -1,0 +1,126 @@
+<wxs module="filter" src="../../utils/date.wxs">
+</wxs>
+
+<view class="page">
+  <!--搜索框  -->
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="根据厂矿名称查询" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">根据厂矿名称查询</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="searchPrice">搜索</view>
+  </view>
+  <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+
+  </view>
+
+  <!--navbar -->
+  <view style='height:50px;background-color:#F8F8F8;' class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+        <view data-item="{{item}}" id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item.name}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+  </view>
+
+  <!--sub_navbar -->
+  <view wx:if="{{false}}" style='height:50px;background-color:#F8F8F8;' class="weui-tab">
+    <view class="weui-navbar">
+      <block wx:for-items="{{subTabs}}" wx:key="{{index}}">
+        <view data-item="{{item}}" id="{{index}}" class="weui-navbar__item {{subActiveIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="subTabClick">
+          <view class="weui-navbar__title">{{item.name}}</view>
+        </view> 
+      </block>
+      <view class="weui-navbar__slider" style="left: {{subSliderLeft}}px; transform: translateX({{subSliderOffset}}px); -webkit-transform: translateX({{subSliderOffset}}px);"></view>
+    </view>
+  </view>
+
+  <!--button  -->
+  <view wx:if="{{false}}" style='padding:10px;'>
+    <button bindtap='changeOwner' data-item="{{2}}" style='width:50%;float:left;display:inline-block;border-top-right-radius:0;border-bottom-right-radius:0;' class="weui-btn" type="primary" plain="{{priceOwnerType==1}}">代发价</button>
+    <button bindtap='changeOwner' data-item="{{1}}" style='margin-top:0px;width:50%;border-top-left-radius:0;border-bottom-left-radius:0;' class="weui-btn" type="primary" plain="{{priceOwnerType==2}}">矿方价</button>
+  </view>
+
+  <!-- list -->
+  <view wx:if="{{prices.length > 0}}" style='padding:12px;' class="weui-cells weui-cells_after-title" wx:for="{{prices}}">
+
+    <view bindtap='gotoDetail' data-item="{{item}}">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view class="placeholder" style='font-weight:bold;'>{{item.factory.name}}</view>
+        </view>
+        <view style='text-align:right;' class="weui-flex__item">
+          <view class="placeholder">{{filter.timestampToTime(item.createdTime)}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
+        价格：
+        <span style="color:red;">￥{{item.price}}</span>
+      </view>
+
+      <view style='font-size:16px;' wx:if="{{factoryType == 1}}" class="weui-flex">
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            热{{item.coal_fareliang}}
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">水{{item.coal_quanshuifen}}</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">灰{{item.coal_huifen}}</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">硫{{item.coal_liufen}}</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">挥{{item.coal_huifafen}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{factoryType == 2}}" class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder">
+          热{{item.coke_huifafen}}
+        </view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">水{{item.coke_shuifen}}</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">灰{{item.coke_huifen}}</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">硫{{item.coke_hanliu}}</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">挥{{item.coke_hantan}}</view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{prices.length == 0}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+</view>

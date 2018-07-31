@@ -1,4 +1,4 @@
-package com.young.coal.business.config;
+package com.young.coal.business.common.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
