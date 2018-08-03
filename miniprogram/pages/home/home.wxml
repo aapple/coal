@@ -1,2 +1,69 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<wxs module="filter" src="../../utils/date.wxs">
+</wxs>
+
+<view class="page">
+    <view>
+       <image style='width:100%;height:180px;' src="../images/banner2.jpg"></image>
+    </view> 
+    
+    <view class="weui-flex">
+        <view class="weui-flex__item" style="text-align:center;">
+                 <image bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_km.png"></image>
+
+                 <div style="display:block;font-size:15px;">煤价查询</div>
+        </view>
+        <view class="weui-flex__item" style="text-align:center;">
+                 <image bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkda.png"></image>
+
+                 <div style="display:block;font-size:15px;">兰炭价查询</div>
+        </view>
+        <view class="weui-flex__item" style="text-align:center;">
+                 <image bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkzx.png"></image>
+
+                 <div style="display:block;font-size:15px;">运费</div>
+        </view>
+    </view>
+
+    <view style='margin:30px 30px 20px 30px;font-size:18px;'>推荐煤炭</view>
+   
+     <!-- list -->
+  <view wx:if="{{prices.length > 0}}" style='padding:12px;' class="weui-cells weui-cells_after-title" wx:for="{{prices}}">
+
+    <view bindtap='gotoDetail' data-item="{{item}}">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view class="placeholder" style='font-weight:bold;'>{{item.factory.name}}</view>
+        </view>
+        <view style='text-align:right;' class="weui-flex__item">
+          <view class="placeholder">{{filter.timestampToTime(item.createdTime)}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
+        价格：
+        <span style="color:red;">￥{{item.price}}</span>
+      </view>
+
+      <view style='font-size:16px;' wx:if="{{factoryType == 1}}" class="weui-flex">
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            热{{item.coal_fareliang}}
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">水{{item.coal_quanshuifen}}</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">灰{{item.coal_huifen}}</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">硫{{item.coal_liufen}}</view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">挥{{item.coal_huifafen}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
