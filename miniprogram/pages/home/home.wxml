@@ -8,17 +8,17 @@
     
     <view class="weui-flex">
         <view class="weui-flex__item" style="text-align:center;">
-                 <image bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_km.png"></image>
+                 <image id='煤矿' bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_km.png"></image>
 
                  <div style="display:block;font-size:15px;">煤价查询</div>
         </view>
         <view class="weui-flex__item" style="text-align:center;">
-                 <image bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkda.png"></image>
+                 <image id='兰炭' bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkda.png"></image>
 
                  <div style="display:block;font-size:15px;">兰炭价查询</div>
         </view>
         <view class="weui-flex__item" style="text-align:center;">
-                 <image bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkzx.png"></image>
+                 <image id='运输' bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkzx.png"></image>
 
                  <div style="display:block;font-size:15px;">运费</div>
         </view>
@@ -29,7 +29,7 @@
      <!-- list -->
   <view wx:if="{{prices.length > 0}}" style='padding:12px;' class="weui-cells weui-cells_after-title" wx:for="{{prices}}">
 
-    <view bindtap='gotoDetail' data-item="{{item}}">
+    <view bindtap='gotoDetailPage' data-item="{{item}}">
       <view class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder" style='font-weight:bold;'>{{item.factory.name}}</view>
@@ -44,7 +44,7 @@
         <span style="color:red;">￥{{item.price}}</span>
       </view>
 
-      <view style='font-size:16px;' wx:if="{{factoryType == 1}}" class="weui-flex">
+      <view style='font-size:16px;' wx:if="{{factoryType == '煤矿'}}" class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder">
             热{{item.coal_fareliang}}

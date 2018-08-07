@@ -33,29 +33,11 @@
     <view class="weui-navbar">
       <block wx:for-items="{{tabs}}" wx:key="{{index}}">
         <view data-item="{{item}}" id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-          <view class="weui-navbar__title">{{item.name}}</view>
+          <view class="weui-navbar__title">{{item}}</view>
         </view>
       </block>
       <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
-  </view>
-
-  <!--sub_navbar -->
-  <view wx:if="{{false}}" style='height:50px;background-color:#F8F8F8;' class="weui-tab">
-    <view class="weui-navbar">
-      <block wx:for-items="{{subTabs}}" wx:key="{{index}}">
-        <view data-item="{{item}}" id="{{index}}" class="weui-navbar__item {{subActiveIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="subTabClick">
-          <view class="weui-navbar__title">{{item.name}}</view>
-        </view> 
-      </block>
-      <view class="weui-navbar__slider" style="left: {{subSliderLeft}}px; transform: translateX({{subSliderOffset}}px); -webkit-transform: translateX({{subSliderOffset}}px);"></view>
-    </view>
-  </view>
-
-  <!--button  -->
-  <view wx:if="{{false}}" style='padding:10px;'>
-    <button bindtap='changeOwner' data-item="{{2}}" style='width:50%;float:left;display:inline-block;border-top-right-radius:0;border-bottom-right-radius:0;' class="weui-btn" type="primary" plain="{{priceOwnerType==1}}">代发价</button>
-    <button bindtap='changeOwner' data-item="{{1}}" style='margin-top:0px;width:50%;border-top-left-radius:0;border-bottom-left-radius:0;' class="weui-btn" type="primary" plain="{{priceOwnerType==2}}">矿方价</button>
   </view>
 
   <!-- list -->
@@ -64,10 +46,10 @@
     <view bindtap='gotoDetail' data-item="{{item}}">
       <view class="weui-flex">
         <view class="weui-flex__item">
-          <view class="placeholder" style='font-weight:bold;'>{{item.factory.name}}</view>
+          <view class="placeholder" style='font-weight:bold;'>{{item.factoryName}}</view>
         </view>
         <view style='text-align:right;' class="weui-flex__item">
-          <view class="placeholder">{{filter.timestampToTime(item.createdTime)}}</view>
+          <view class="placeholder">{{item.updateDate}}</view>
         </view>
       </view>
 
@@ -76,7 +58,7 @@
         <span style="color:red;">￥{{item.price}}</span>
       </view>
 
-      <view style='font-size:16px;' wx:if="{{factoryType == 1}}" class="weui-flex">
+      <view style='font-size:16px;' wx:if="{{factoryType == '煤矿'}}" class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder">
             热{{item.coal_fareliang}}
@@ -97,7 +79,7 @@
       </view>
     </view>
 
-    <view wx:if="{{factoryType == 2}}" class="weui-flex">
+    <view wx:if="{{factoryType == '兰炭'}}" class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder">
           热{{item.coke_huifafen}}

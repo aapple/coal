@@ -1,30 +1,27 @@
 
 var sliderWidth = 60;
-var subSliderWidth = 60;
 
 Page({
   data: {
     inputShowed: false,
     inputVal: "",
     prices: [],
-    tabs: [],
-    subTabs: [],
-    productTyps: [],
+    tabs: ["面煤","块煤","籽煤","原煤","混煤","工程煤"],
     activeIndex: 0,
-    subActiveIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    subSliderOffset: 0,
-    subSliderLeft: 0,
-    productType: 1,
-    factoryType: "1",
-    priceOwnerType: "2"
+    productType: "面煤",
+    factoryType: "煤矿",
+  },
+  onLoad: function (options) {
+
+    // 初始化数据
+    this.setData({
+      factoryType: options.data
+    })
   },
   onShow: function () {
     var that = this;
-
-    // 查询煤种
-    this.getProductTypeList();
 
     // 查询煤价
     var params = this.getQueryParams();
@@ -42,40 +39,17 @@ Page({
   getProductPriceList: function(data) {
     var that = this;
     wx.request({
-      url: 'https://coalapp.smmeitan.cn/app/product/getProductPriceList',
+      url: 'https://coalapp.smmeitan.cn/coalPrice/query',
       data: data,
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
-      },
+      }, 
       success: function (res) {
-
+        console.log(res.data.data.data);
         that.setData({
-          prices: res.data
+          prices: res.data.data.data
         });
-      }
-    })
-
-  },
-  getProductTypeList: function () {
-    var that = this;
-    wx.request({
-      url: 'https://coalapp.smmeitan.cn/app/product/getProductTypeList',
-      data: {
-        factoryType: "1",
-        name: "tab"
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-
-        that.setData({
-          productTyps: res.data,
-          tabs: res.data 
-        });
-        
       }
     })
 
@@ -94,13 +68,9 @@ Page({
   getQueryParams() {
 
     var params = {
-      productType: this.data.productType != -1 ? { id: this.data.productType } : null,
-      factory: { factoryType: this.factoryType }
+      productType: this.data.productType,
+      factory: this.data.factoryType
     };
-
-    if (this.data.factoryType == 1 + "") {
-      params.priceOwnerType = this.data.priceOwnerType;
-    }
 
     return params;
 
@@ -120,89 +90,21 @@ Page({
   },
   tabClick: function (e) {
 
-    var productType = "";
-    var subTabs = [];
-    var item = e.currentTarget.dataset.item;
-    if (item.subList != undefined && item.subList.length > 0){
-      productType = item.subList[0].id;
-      subTabs = item.subList;
-    } else {
-      productType = item.id;
-    }
+    var productType = e.currentTarget.dataset.item;
 
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id,
-      subSliderOffset: 0,
-      subActiveIndex: e.currentTarget.id,
-      subActiveIndex : 0,
-      productType: productType,
-      subTabs: subTabs
-    });
-
-    var that = this;
-    if (this.data.subTabs.length == 5) {
-      subSliderWidth = 70;
-    } else if (this.data.subTabs.length == 4) {
-      subSliderWidth = 80;
-    } else if (this.data.subTabs.length == 5) {
-      subSliderWidth = 100
-    }
-
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          subSliderLeft: (res.windowWidth / that.data.subTabs.length - subSliderWidth) / 2,
-        });
-      }
+      productType: productType
     });
 
     var params = this.getQueryParams();
     this.getProductPriceList(params); 
 
   },
-  subTabClick: function (e) {
-
-    var that = this;
-    if (this.data.subTabs.length == 5){
-      subSliderWidth = 70;
-    } else if (this.data.subTabs.length == 4){
-      subSliderWidth = 80;
-    } else if (this.data.subTabs.length == 5) {
-      subSliderWidth = 100
-    }
-
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          subSliderLeft: (res.windowWidth / that.data.subTabs.length - subSliderWidth) / 2,
-          subSliderOffset: res.windowWidth / that.data.subTabs.length * e.currentTarget.id
-        });
-      }
-    });
-
-    this.setData({
-      subSliderOffset: e.currentTarget.offsetLeft,
-      subActiveIndex: e.currentTarget.id,
-      productType: e.currentTarget.dataset.item.id
-    });
-
-    var params = this.getQueryParams();
-    this.getProductPriceList(params);
-
-  },
   gotoDetail: function (e) {
     wx.navigateTo({
       url: '/pages/logs/logs?data=' + JSON.stringify(e.currentTarget.dataset.item)
     })
-  },
-  changeOwner: function (e) {
-    console.log(1)
-    this.setData({
-      priceOwnerType: e.currentTarget.dataset.item
-    });
-
-    var params = this.getQueryParams();
-    this.getProductPriceList(params);
   }
 })

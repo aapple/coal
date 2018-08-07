@@ -6,9 +6,8 @@ Page({
    */
   data: {
     prices: [],
-    productType: 1,
-    factoryType: "1",
-    priceOwnerType: "2"
+    productType: "面煤",
+    factoryType: "煤矿"
   },
 
   /**
@@ -16,39 +15,25 @@ Page({
    */
   onLoad: function (options) {
     // 查询煤价
-    var params = this.getQueryParams();
+    var params = {};
     this.getProductPriceList(params);
   },
   getProductPriceList: function (data) {
     var that = this;
     wx.request({
-      url: 'https://coalapp.smmeitan.cn/app/product/getProductPriceList',
+      url: 'https://coalapp.smmeitan.cn/coalPrice/query',
       data: data,
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-
+        console.log(res.data.data.data);
         that.setData({
-          prices: res.data
+          prices: res.data.data.data
         });
       }
     })
-
-  },
-  getQueryParams() {
-
-    var params = {
-      productType: this.data.productType != -1 ? { id: this.data.productType } : null,
-      factory: { factoryType: this.factoryType }
-    };
-
-    if (this.data.factoryType == 1 + "") {
-      params.priceOwnerType = this.data.priceOwnerType;
-    }
-
-    return params;
 
   },
   /**
@@ -102,7 +87,14 @@ Page({
 
   gotoDetail: function (e) {
     wx.navigateTo({
-      url: '/pages/index/index'
+      url: '/pages/index/index?data=' + e.currentTarget.id
     })
   },
+
+  gotoDetailPage: function (e) {
+    wx.navigateTo({
+      url: '/pages/logs/logs?data=' + JSON.stringify(e.currentTarget.dataset.item)
+    })
+  }
+  
 })
