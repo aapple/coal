@@ -32,10 +32,10 @@
     <view bindtap='gotoDetailPage' data-item="{{item}}">
       <view class="weui-flex">
         <view class="weui-flex__item">
-          <view class="placeholder" style='font-weight:bold;'>{{item.factory.name}}</view>
+          <view class="placeholder" style='font-weight:bold;'>{{item.factoryName}}</view>
         </view>
         <view style='text-align:right;' class="weui-flex__item">
-          <view class="placeholder">{{filter.timestampToTime(item.createdTime)}}</view>
+          <view class="placeholder">{{item.updateDate}}</view>
         </view>
       </view>
 
@@ -44,7 +44,7 @@
         <span style="color:red;">￥{{item.price}}</span>
       </view>
 
-      <view style='font-size:16px;' wx:if="{{factoryType == '煤矿'}}" class="weui-flex">
+      <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder">
             热{{item.coal_fareliang}}

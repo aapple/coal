@@ -53,6 +53,7 @@ public class CoalPriceService {
 
         Update update = new Update();
         update.set("factoryName", coalPrice.getFactoryName());
+        update.set("factoryType", coalPrice.getFactoryType());
         update.set("productType", coalPrice.getProductType());
         update.set("productTypeDetail", coalPrice.getProductTypeDetail());
         update.set("price", coalPrice.getPrice());

@@ -7,7 +7,7 @@ Page({
   data: {
     prices: [],
     productType: "面煤",
-    factoryType: "煤矿"
+    factoryType: "煤炭"
   },
 
   /**
@@ -21,14 +21,13 @@ Page({
   getProductPriceList: function (data) {
     var that = this;
     wx.request({
-      url: 'https://coalapp.smmeitan.cn/coalPrice/query',
+      url: 'http://localhost:8089/coalPrice/query',
       data: data,
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data.data.data);
         that.setData({
           prices: res.data.data.data
         });

@@ -119,6 +119,7 @@ export default {
   data () {
     return {
       factoryName: this.$route.params.factoryName,
+      factoryType: '煤炭',
       productType: this.$route.params.productType,
       productTypeDetail: this.$route.params.productTypeDetail,
       productTypeDetails: [],
@@ -190,6 +191,7 @@ export default {
     updateCoalPrice () {
       var data = {
         factoryName: this.factoryName,
+        factoryType: this.factoryType,
         productType: this.productType,
         productTypeDetail: this.productTypeDetail,
         coalWashing: this.coalWashing,

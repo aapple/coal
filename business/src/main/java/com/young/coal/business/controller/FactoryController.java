@@ -2,9 +2,11 @@ package com.young.coal.business.controller;
 
 
 import com.young.coal.business.model.CoalPrice;
+import com.young.coal.business.model.Factory;
 import com.young.coal.business.model.ResponseData;
 import com.young.coal.business.model.SuccessTip;
 import com.young.coal.business.service.CoalPriceService;
+import com.young.coal.business.service.FactoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class FactoryController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private CoalPriceService coalPriceService;
+    private FactoryService factoryService;
 
     @RequestMapping("/add")
     @ResponseBody
@@ -47,16 +49,16 @@ public class FactoryController {
     @ResponseBody
     public Object update(@RequestBody CoalPrice coalPrice){
 
-        coalPriceService.update(coalPrice);
+        //coalPriceService.update(coalPrice);
 
         return new SuccessTip();
     }
 
     @RequestMapping("/query")
     @ResponseBody
-    public Object query(@RequestBody CoalPrice coalPrice){
+    public Object query(@RequestBody Factory factory){
 
-        ResponseData responseData = coalPriceService.query(coalPrice);
+        ResponseData responseData = factoryService.query(factory);
         SuccessTip successTip = new SuccessTip();
         successTip.setData(responseData);
 

@@ -1,5 +1,6 @@
 package com.young.coal.business.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,6 +19,8 @@ import java.util.Date;
 public class CoalPrice extends Page{
 
     private String factoryName;
+
+    private String factoryType; // 煤炭，兰炭
 
     private String productType;
 
@@ -52,7 +55,10 @@ public class CoalPrice extends Page{
     //1.在产 0.停产
     private Integer state;
 
+
+    @JsonFormat(timezone = "GMT+8", pattern = "MM-dd")
     private Date updateDate;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "MM-dd")
     private Date createDate;
 }

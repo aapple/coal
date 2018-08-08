@@ -11,9 +11,10 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Document(collection = "factory")
-public class Factory {
+public class Factory extends Page{
 
     private String factoryName;
+    private String factoryType; // 煤炭，兰炭
     private String userId; // 管理用户的Id
     private String sallerName; // 业务员名字
     private String sallerPhone; // 业务员联系电话

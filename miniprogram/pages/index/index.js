@@ -11,7 +11,7 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     productType: "面煤",
-    factoryType: "煤矿",
+    factoryType: "煤炭",
   },
   onLoad: function (options) {
 
@@ -46,7 +46,6 @@ Page({
         'content-type': 'application/json' // 默认值
       }, 
       success: function (res) {
-        console.log(res.data.data.data);
         that.setData({
           prices: res.data.data.data
         });

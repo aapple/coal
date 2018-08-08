@@ -58,7 +58,7 @@
         <span style="color:red;">￥{{item.price}}</span>
       </view>
 
-      <view style='font-size:16px;' wx:if="{{factoryType == '煤矿'}}" class="weui-flex">
+      <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder">
             热{{item.coal_fareliang}}

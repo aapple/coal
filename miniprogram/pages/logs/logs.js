@@ -4,34 +4,39 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     detail: {},
-    priceType: ""
+    factory: {}
   },
   onLoad: function (options) {
     
     // 初始化数据
     var item = JSON.parse(options.data)
-    
-    if (item.priceOwnerType == 1) {
-      var priceType = "两票价";
-    } else {
-      var priceType = "一票价";
-    }
-
 
     this.setData({
-      detail: item,
-      priceType: priceType
+      detail: item
+    });
+
+    this.getFactoryDetail();
+  },
+  getFactoryDetail: function () {
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8089/factory/query',
+      data: { "factoryName": this.data.detail.factoryName},
+      method: "POST",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        that.setData({
+          factory: res.data.data.data[0]
+        });
+      }
     })
+ 
   },
   gotoCall() {
-    if (this.data.detail.priceOwnerType == 1) {
-      wx.makePhoneCall({
-        phoneNumber: this.data.detail.factory.onwerCallNumber
-      })  
-    } else {
-      wx.makePhoneCall({
-        phoneNumber: this.data.detail.factory.salerCallNumber
-      }) 
-    }
+    wx.makePhoneCall({
+      phoneNumber: this.data.factory.sallerPhone
+    }) 
   }
 })

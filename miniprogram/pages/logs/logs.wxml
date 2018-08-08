@@ -9,7 +9,7 @@
         <view class="weui-label">产品种类</view>
       </view>
       <view class="weui-cell__bd">
-        <input value='{{detail.productType.name}}' class="weui-input" disabled="true" />
+        <input value='{{detail.productType}}' class="weui-input" disabled="true" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -25,10 +25,10 @@
         <view class="weui-label">价格类型</view>
       </view>
       <view class="weui-cell__bd">
-        <input value='{{priceType}}' class="weui-input" disabled="true" />
+        <input value='二票价' class="weui-input" disabled="true" />
       </view>
     </view>
-    <view wx:if="{{detail.factory.factoryType==1}}" class="weui-cell weui-cell_input">
+    <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">是否水洗</view>
       </view>
@@ -36,7 +36,7 @@
         <input value="{{detail.coalWashing?'水洗':'不水洗'}}" class="weui-input" disabled="true" />
       </view>
     </view>
-    <view wx:if="{{detail.factory.factoryType==1}}" class="weui-cell weui-cell_input">
+    <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">是否过筛</view>
       </view>
@@ -57,7 +57,7 @@
         <view class="weui-label">更新时间</view>
       </view>
       <view class="weui-cell__bd">
-        <input value='{{filter.timestampToTime(detail.createdTime)}}' class="weui-input" disabled="true" />
+        <input value='{{detail.updateDate}}' class="weui-input" disabled="true" />
       </view>
     </view>
   </view>
@@ -66,26 +66,17 @@
 <view class="icon-box" style='padding:10px 0 10px 50px;background-color:#fff;margin:0 10px 10px 10px'>
   <icon type="success" size="70"></icon>
   <view class="icon-box__ctn">
-    <view class="icon-box__title">{{detail.factory.name}}</view>
-    <view wx:if="{{detail.factory.factoryType==2}}">
-    <view class="icon-box__desc">联系人：{{detail.factory.salerCallPerson}}</view>
+    <view class="icon-box__title">{{detail.factorNname}}</view>
+    <view>
+    <view class="icon-box__desc">联系人：{{factory.sallerName}}</view>
     <view class="icon-box__desc">联系电话：
-    <span style="color:blue">{{detail.factory.salerCallNumber}}</span></view>
+    <span style="color:blue">{{factory.sallerPhone}}</span></view>
     </view>
 
-    <view wx:if="{{detail.factory.factoryType==1 && detail.priceOwnerType==1}}">
-    <view class="icon-box__desc">联系人：{{detail.factory.onwerCallPerson}}</view>
-    <view class="icon-box__desc">联系电话：<span style="color:blue">{{detail.factory.onwerCallNumber}}</span></view>
-    </view>
-
-    <view wx:if="{{detail.factory.factoryType==1 && detail.priceOwnerType==2}}">
-    <view class="icon-box__desc">业务专员：{{detail.factory.salerCallPerson}}</view>
-    <view class="icon-box__desc">销售电话：<span style="color:blue">{{detail.factory.salerCallNumber}}</span></view>
-    </view>
   </view>
 </view>   
 
-<view wx:if="{{detail.factory.factoryType==1}}">
+<view wx:if="{{detail.factoryType== '煤炭'}}">
   <view class="weui-flex">
     <view class="weui-flex__item">
       <view class="placeholder">发热量(大卡)</view>
@@ -128,7 +119,7 @@
   </view>
 </view>
 
-<view wx:if="{{detail.factory.factoryType==2}}">
+<view wx:if="{{detail.factoryType=='兰炭'}}">
   <view class="weui-flex">
     <view class="weui-flex__item">
       <view class="placeholder">含硫(%)</view>
