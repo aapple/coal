@@ -16,3 +16,19 @@ export const queryCoalPriceList = (data) => {
   })
 }
 
+
+export const updateFactory = (data) => {
+  return axios.request({
+    url: 'factory/update',
+    data,
+    method: 'post'
+  })
+}
+
+export const queryFactoryList = (data) => {
+  return axios.request({
+    url: 'factory/query',
+    data,
+    method: 'post'
+  })
+}

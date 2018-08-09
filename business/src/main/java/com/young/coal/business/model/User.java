@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Document(collection = "user")
-public class User {
+public class User extends Page{
 
     private String userName;
     private String password;

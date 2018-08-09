@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by yaobin on 2017/12/4.
@@ -48,5 +47,20 @@ public class FactoryService {
         responseData.setData(factories);
 
         return responseData;
+    }
+
+    public void update(Factory factory) {
+
+        Update update = new Update();
+        update.set("factoryName", factory.getFactoryName());
+        update.set("factoryType", factory.getFactoryType());
+        update.set("userName", factory.getUserName());
+        update.set("sallerName", factory.getSallerName());
+        update.set("sallerPhone", factory.getSallerPhone());
+        update.setOnInsert("createDate", new Date());
+
+        Query query = new Query(Criteria.where("factoryName").is(factory.getFactoryName()));
+
+        mongoTemplate.upsert(query, update, Factory.class);
     }
 }

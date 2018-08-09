@@ -117,7 +117,8 @@ export default [
         name: 'coalPriceList_page',
         meta: {
           icon: '_qq',
-          title: '煤炭价格管理'
+          title: '煤炭价格管理',
+          notCache: true
         },
         component: () => import('@/view/coal/coalPriceList.vue')
       },
@@ -134,6 +135,35 @@ export default [
       }
     ]
   },
+  {
+    path: '/factory',
+      name: 'factory',
+    component: Main,
+    children: [
+      {
+        path: 'factoryList_page',
+        name: 'factoryList_page',
+        meta: {
+          icon: '_qq',
+          title: '厂矿管理',
+          notCache: true
+        },
+        component: () => import('@/view/factory/factoryList.vue')
+      },
+      {
+        path: 'factory_page',
+          name: 'factory_page',
+        meta: {
+        icon: '_qq',
+          title: '厂矿更新',
+          hideInMenu: true,
+          notCache: true
+      },
+        component: () => import('@/view/factory/factory.vue')
+      }
+    ]
+  },
+
 
   {
     path: '/401',

@@ -207,6 +207,9 @@ export default {
       };
       updateCoalPrice(data).then(res => {
         this.$Message.info("更新成功！");
+        this.$router.push({
+          name: 'coalPriceList_page'
+        })
         resolve()
       }).catch(err => {
 

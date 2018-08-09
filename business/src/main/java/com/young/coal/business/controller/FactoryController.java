@@ -27,29 +27,11 @@ public class FactoryController {
     @Autowired
     private FactoryService factoryService;
 
-    @RequestMapping("/add")
-    @ResponseBody
-    public Object add(@RequestBody CoalPrice coalPrice){
-
-        //coalPriceService.add(coalPrice);
-
-        return new SuccessTip();
-    }
-
-    @RequestMapping("/delete")
-    @ResponseBody
-    public Object delete(@RequestBody CoalPrice coalPrice){
-
-        //coalPriceService.delete(coalPrice);
-
-        return new SuccessTip();
-    }
-
     @RequestMapping("/update")
     @ResponseBody
-    public Object update(@RequestBody CoalPrice coalPrice){
+    public Object update(@RequestBody Factory factory){
 
-        //coalPriceService.update(coalPrice);
+        factoryService.update(factory);
 
         return new SuccessTip();
     }

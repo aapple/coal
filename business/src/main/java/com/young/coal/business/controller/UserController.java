@@ -2,9 +2,7 @@ package com.young.coal.business.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.young.coal.business.common.exception.CoalException;
-import com.young.coal.business.model.RequestParams;
-import com.young.coal.business.model.SuccessTip;
-import com.young.coal.business.model.User;
+import com.young.coal.business.model.*;
 import com.young.coal.business.service.UserService;
 import com.young.coal.business.common.utils.Base64Utils;
 import com.young.coal.business.common.utils.RequestUtils;
@@ -74,13 +72,23 @@ public class UserController {
         return successTip;
     }
 
-    @RequestMapping("/createUser")
+    @RequestMapping("/update")
     @ResponseBody
-    public Object createUser(@RequestBody User user) {
+    public Object update(@RequestBody User user){
 
-        userService.createUser(user);
+        userService.update(user);
 
+        return new SuccessTip();
+    }
+
+    @RequestMapping("/query")
+    @ResponseBody
+    public Object query(@RequestBody User user){
+
+        ResponseData responseData = userService.query(user);
         SuccessTip successTip = new SuccessTip();
+        successTip.setData(responseData);
+
         return successTip;
     }
 }
