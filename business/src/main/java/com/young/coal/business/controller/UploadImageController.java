@@ -21,8 +21,6 @@ import java.util.UUID;
 @Controller
 public class UploadImageController {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     String ACCESS_KEY = "Dv1hWgZr--j2d1boSh0uO7NaFigCFOxx-ESm_Nfn";
     String SECRET_KEY = "GRLfsQM4DxgfPvRPI4vANXYvCURjSgJBW9MnLy1k";
 

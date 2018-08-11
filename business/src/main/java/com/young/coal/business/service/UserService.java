@@ -62,7 +62,7 @@ public class UserService {
         List<User> users = mongoTemplate.find(query, User.class);
 
         ResponseData responseData = new ResponseData();
-        responseData.setTotal(mongoTemplate.count(query, CoalPrice.class));
+        responseData.setTotal(mongoTemplate.count(query, User.class));
         responseData.setPage(user.getPage());
 
         responseData.setData(users);
@@ -75,10 +75,12 @@ public class UserService {
         Update update = new Update();
         update.set("userName", user.getUserName());
         update.set("password", user.getPassword());
+        update.set("role", user.getRole());
+        update.set("updateDate", new Date());
         update.setOnInsert("createDate", new Date());
 
         Query query = new Query(Criteria.where("userName").is(user.getUserName()));
 
-        mongoTemplate.upsert(query, update, Factory.class);
+        mongoTemplate.upsert(query, update, User.class);
     }
 }

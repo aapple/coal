@@ -38,72 +38,7 @@ export default [
           hideInMenu: true,
           notCache: true
         },
-        component: () => import('@/view/single-page/home')
-      }
-    ]
-  },
-  {
-    path: '/components',
-    name: 'components',
-    meta: {
-      icon: 'social-buffer',
-      title: '组件'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'count_to_page',
-        name: 'count_to_page',
-        meta: {
-          icon: 'arrow-graph-up-right',
-          title: '数字渐变'
-        },
-        component: () => import('@/view/components/count-to/count-to.vue')
-      },
-      {
-        path: 'tables_page',
-        name: 'tables_page',
-        meta: {
-          icon: 'ios-grid-view',
-          title: '多功能表格'
-        },
-        component: () => import('@/view/components/tables/tables.vue')
-      },
-      {
-        path: 'split_pane_page',
-        name: 'split_pane_page',
-        meta: {
-          icon: 'pause',
-          title: '分割窗口'
-        },
-        component: () => import('@/view/components/split-pane/split-pane.vue')
-      },
-      {
-        path: 'markdown_page',
-        name: 'markdown_page',
-        meta: {
-          icon: 'social-markdown',
-          title: 'Markdown编辑器'
-        },
-        component: () => import('@/view/components/markdown/markdown.vue')
-      },
-      {
-        path: 'editor_page',
-        name: 'editor_page',
-        meta: {
-          icon: 'compose',
-          title: '富文本编辑器'
-        },
-        component: () => import('@/view/components/editor/editor.vue')
-      },
-      {
-        path: 'icons_page',
-        name: 'icons_page',
-        meta: {
-          icon: '_bear',
-          title: '自定义图标'
-        },
-        component: () => import('@/view/components/icons/icons.vue')
+        component: () => import('@/view/coal/coalPriceList.vue')
       }
     ]
   },
@@ -136,6 +71,62 @@ export default [
     ]
   },
   {
+    path: '/coke',
+      name: 'coke',
+    component: Main,
+    children: [
+    {
+      path: 'cokePriceList_page',
+      name: 'cokePriceList_page',
+      meta: {
+        icon: '_qq',
+        title: '兰炭价格管理',
+        notCache: true
+      },
+      component: () => import('@/view/coke/cokePriceList.vue')
+    },
+      {
+        path: 'cokePrice_page',
+          name: 'cokePrice_page',
+        meta: {
+        icon: '_qq',
+          title: '兰炭价格更新',
+          hideInMenu: true,
+          notCache: true
+      },
+        component: () => import('@/view/coke/cokePrice.vue')
+      }
+    ]
+  },
+  {
+    path: '/logistics',
+      name: 'logistics',
+    component: Main,
+    children: [
+    {
+      path: 'logisticsList_page',
+      name: 'logisticsList_page',
+      meta: {
+        icon: '_qq',
+        title: '物流单管理',
+        notCache: true
+      },
+      component: () => import('@/view/logistics/logisticsList.vue')
+    },
+      {
+        path: 'logistics_page',
+          name: 'logistics_page',
+        meta: {
+        icon: '_qq',
+          title: '物流单更新',
+          hideInMenu: true,
+          notCache: true
+      },
+        component: () => import('@/view/logistics/logistics.vue')
+      }
+    ]
+  },
+  {
     path: '/factory',
       name: 'factory',
     component: Main,
@@ -163,8 +154,34 @@ export default [
       }
     ]
   },
-
-
+  {
+    path: '/user',
+      name: 'user',
+    component: Main,
+    children: [
+    {
+      path: 'userList_page',
+      name: 'userList_page',
+      meta: {
+        icon: '_qq',
+        title: '用户管理',
+        notCache: true
+      },
+      component: () => import('@/view/user/userList.vue')
+    },
+      {
+        path: 'user_page',
+          name: 'user_page',
+        meta: {
+        icon: '_qq',
+          title: '用户更新',
+          hideInMenu: true,
+          notCache: true
+      },
+        component: () => import('@/view/user/user.vue')
+      }
+    ]
+  },
   {
     path: '/401',
     name: 'error_401',

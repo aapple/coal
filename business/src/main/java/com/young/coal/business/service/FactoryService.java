@@ -41,7 +41,7 @@ public class FactoryService {
         List<Factory> factories = mongoTemplate.find(query, Factory.class);
 
         ResponseData responseData = new ResponseData();
-        responseData.setTotal(mongoTemplate.count(query, CoalPrice.class));
+        responseData.setTotal(mongoTemplate.count(query, Factory.class));
         responseData.setPage(factory.getPage());
 
         responseData.setData(factories);
@@ -57,6 +57,7 @@ public class FactoryService {
         update.set("userName", factory.getUserName());
         update.set("sallerName", factory.getSallerName());
         update.set("sallerPhone", factory.getSallerPhone());
+        update.set("updateDate", new Date());
         update.setOnInsert("createDate", new Date());
 
         Query query = new Query(Criteria.where("factoryName").is(factory.getFactoryName()));

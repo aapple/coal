@@ -32,3 +32,35 @@ export const queryFactoryList = (data) => {
     method: 'post'
   })
 }
+
+export const queryUserList = (data) => {
+  return axios.request({
+    url: 'user/query',
+    data,
+    method: 'post'
+  })
+}
+
+export const updateUser = (data) => {
+  return axios.request({
+    url: 'user/update',
+    data,
+    method: 'post'
+  })
+}
+
+export const queryLogisticsList = (data) => {
+  return axios.request({
+    url: 'logistics/query',
+    data,
+    method: 'post'
+  })
+}
+
+export const updateLogistics = (data) => {
+  return axios.request({
+    url: 'logistics/update',
+    data,
+    method: 'post'
+  })
+}

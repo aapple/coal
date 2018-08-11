@@ -46,9 +46,9 @@ public class CoalPrice extends Page{
     private String coal_huifafen; // 挥发份
     private String coal_huifen; // 灰分
     private String coal_gudingtan; // 固定碳
-    private String coke_hantan; // 含碳
+    private String coke_gudingtan; // 固定碳
     private String coke_hanliu; // 含硫
-    private String coke_shuifen; // 水份
+    private String coke_quanshui; // 全水
     private String coke_huifafen; // 挥发份
     private String coke_huifen; // 灰分
 

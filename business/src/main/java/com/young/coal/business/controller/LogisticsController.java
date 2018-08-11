@@ -1,12 +1,10 @@
 package com.young.coal.business.controller;
 
 
-import com.young.coal.business.model.CoalPrice;
+import com.young.coal.business.model.Logistics;
 import com.young.coal.business.model.ResponseData;
 import com.young.coal.business.model.SuccessTip;
-import com.young.coal.business.service.CoalPriceService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.young.coal.business.service.LogisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,26 +15,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by yaobin on 2017/11/7.
  */
 @Controller
-@RequestMapping("/coalPrice")
-public class CoalPriceController {
+@RequestMapping("/logistics")
+public class LogisticsController {
 
     @Autowired
-    private CoalPriceService coalPriceService;
+    private LogisticsService logisticsService;
 
     @RequestMapping("/update")
     @ResponseBody
-    public Object update(@RequestBody CoalPrice coalPrice){
+    public Object update(@RequestBody Logistics logistics){
 
-        coalPriceService.update(coalPrice);
+        logisticsService.update(logistics);
 
         return new SuccessTip();
     }
 
     @RequestMapping("/query")
     @ResponseBody
-    public Object query(@RequestBody CoalPrice coalPrice){
+    public Object query(@RequestBody Logistics logistics){
 
-        ResponseData responseData = coalPriceService.query(coalPrice);
+        ResponseData responseData = logisticsService.query(logistics);
         SuccessTip successTip = new SuccessTip();
         successTip.setData(responseData);
 

@@ -13,6 +13,7 @@
       <Select v-model="factoryType" style="width:200px">
         <Option value="煤炭" >煤炭</Option>
         <Option value="兰炭" >兰炭</Option>
+        <Option value="物流" >物流</Option>
       </Select>
       </Col>
     </Row>

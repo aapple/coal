@@ -22,6 +22,10 @@ public class Page {
 
     private Integer total;
 
+    private String userName;
+
+    private String queryType;
+
     public Integer getPage(){
         if(this.page == null){
             this.page = 0;

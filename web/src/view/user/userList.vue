@@ -2,27 +2,26 @@
   <div>
     <Card>
       <tables ref="tables"  search-place="top" v-model="tableData" :columns="columns"/>
-      <Button style="margin: 10px 0;" type="primary" @click="newProductType">新增煤炭种类</Button>
+      <Button style="margin: 10px 0;" type="primary" @click="newProductType">新增用户</Button>
     </Card>
   </div>
 </template>
 
 <script>
   import Tables from '_c/tables'
-  import { queryCoalPriceList } from '@/api/coal'
+  import { queryUserList } from '@/api/coal'
   export default {
-    name: 'coalPriceList_page',
+    name: 'userList_page',
     components: {
       Tables
     },
     data () {
       return {
         columns: [
-          {title: '煤矿名称', key: 'factoryName'},
-          {title: '煤炭种类', key: 'productType'},
-          {title: '煤炭种类细分', key: 'productTypeDetail'},
-          {title: '价格', key: 'price'},
-          {title: '更新时间', key: 'updateDate'},
+          {title: '用户名', key: 'userName'},
+          {title: '密码', key: 'password'},
+          {title: '角色', key: 'role'},
+          {title: '创建时间', key: 'createDate'},
           {
             title: '操作',
             key: 'action',
@@ -43,7 +42,7 @@
                       this.handleUpdate(params.row)
                     }
                   }
-                }, '更新煤价')
+                }, '更新用户')
               ]);
             }
           }
@@ -54,22 +53,20 @@
     methods: {
       handleUpdate (params) {
         this.$router.push({
-          name: 'coalPrice_page',
+          name: 'user_page',
           params: params
         })
       },
       newProductType () {
         this.$router.push({
-          name: 'coalPrice_page',
+          name: 'user_page',
           params: {}
         })
       }
     },
     mounted () {
-      var data = {
-        factoryType: "煤炭"
-      };
-      queryCoalPriceList(data).then(res => {
+      var data = {};
+      queryUserList(data).then(res => {
         this.tableData = res.data.data;
         resolve()
       }).catch(err => {

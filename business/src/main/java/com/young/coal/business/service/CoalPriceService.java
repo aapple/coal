@@ -1,7 +1,9 @@
 package com.young.coal.business.service;
 
+import com.young.coal.business.common.utils.RequestUtils;
 import com.young.coal.business.model.CoalPrice;
 import com.young.coal.business.model.ResponseData;
+import com.young.coal.business.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -30,8 +32,12 @@ public class CoalPriceService {
 
         Query query = new Query();
 
-        if(StringUtils.isNotEmpty(coalPrice.getFactoryName())){
+        if (StringUtils.isNotEmpty(coalPrice.getFactoryName())){
             query.addCriteria(Criteria.where("factoryName").regex(coalPrice.getFactoryName()));
+        }
+
+        if (StringUtils.isNotEmpty(coalPrice.getFactoryType())){
+            query.addCriteria(Criteria.where("factoryType").regex(coalPrice.getFactoryType()));
         }
 
         Pageable pageable = new PageRequest(coalPrice.getPage(), coalPrice.getPageSize());

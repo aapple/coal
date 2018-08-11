@@ -18,12 +18,12 @@
     data () {
       return {
         columns: [
-          {title: '厂矿名称', key: 'factoryName', sortable: true},
-          {title: '厂矿类型', key: 'factoryType', editable: true},
-          {title: '管理用户名称', key: 'userName', editable: true},
-          {title: '业务员名字', key: 'sallerName', editable: true},
-          {title: '业务员联系电话', key: 'sallerPhone', editable: true},
-          {title: '创建时间', key: 'createDate', editable: true},
+          {title: '厂矿名称', key: 'factoryName'},
+          {title: '厂矿类型', key: 'factoryType'},
+          {title: '管理用户名称', key: 'userName'},
+          {title: '业务员名字', key: 'sallerName'},
+          {title: '业务员联系电话', key: 'sallerPhone'},
+          {title: '创建时间', key: 'createDate'},
           {
             title: '操作',
             key: 'action',

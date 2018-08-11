@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/factory")
 public class FactoryController {
 
-    Logger logger = LoggerFactory.getLogger(getClass());
-
     @Autowired
     private FactoryService factoryService;
 
