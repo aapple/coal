@@ -40,6 +40,10 @@ public class CoalPriceService {
             query.addCriteria(Criteria.where("factoryType").regex(coalPrice.getFactoryType()));
         }
 
+        if (StringUtils.isNotEmpty(coalPrice.getProductType())){
+            query.addCriteria(Criteria.where("productType").regex(coalPrice.getProductType()));
+        }
+
         Pageable pageable = new PageRequest(coalPrice.getPage(), coalPrice.getPageSize());
         query.with(pageable);
         query.with(new Sort(new Sort.Order(Sort.Direction.DESC,"createDate")));
@@ -71,7 +75,13 @@ public class CoalPriceService {
         update.set("coal_liufen", coalPrice.getCoal_liufen());
         update.set("coal_huifafen", coalPrice.getCoal_huifafen());
         update.set("coal_huifen", coalPrice.getCoal_huifen());
-        update.set("coal_gudingtan", coalPrice.getCoal_gudingtan());
+
+        update.set("coke_gudingtan", coalPrice.getCoke_gudingtan());
+        update.set("coke_hanliu", coalPrice.getCoke_hanliu());
+        update.set("coke_quanshui", coalPrice.getCoke_quanshui());
+        update.set("coke_huifafen", coalPrice.getCoke_huifafen());
+        update.set("coke_huifen", coalPrice.getCoke_huifen());
+
         update.set("updateDate", new Date());
         update.setOnInsert("createDate", new Date());
 

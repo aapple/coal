@@ -82,11 +82,11 @@
     <view wx:if="{{factoryType == '兰炭'}}" class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder">
-          热{{item.coke_huifafen}}
+          挥{{item.coke_huifafen}}
         </view>
       </view>
       <view class="weui-flex__item">
-        <view class="placeholder">水{{item.coke_shuifen}}</view>
+        <view class="placeholder">水{{item.coke_quanshui}}</view>
       </view>
       <view class="weui-flex__item">
         <view class="placeholder">灰{{item.coke_huifen}}</view>
@@ -95,7 +95,7 @@
         <view class="placeholder">硫{{item.coke_hanliu}}</view>
       </view>
       <view class="weui-flex__item">
-        <view class="placeholder">挥{{item.coke_hantan}}</view>
+        <view class="placeholder">碳{{item.coke_gudingtan}}</view>
       </view>
     </view>
 

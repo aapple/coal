@@ -2,34 +2,11 @@
 </wxs>
 
 <view class="page">
-    <view>
-       <image style='width:100%;height:180px;' src="../images/banner2.jpg"></image>
-    </view> 
-    
-    <view class="weui-flex">
-        <view class="weui-flex__item" style="text-align:center;">
-                 <image id='煤炭' bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_km.png"></image>
+  
+  <!-- list -->
+  <view wx:if="{{lists.length > 0}}" style='padding:12px;' class="weui-cells weui-cells_after-title" wx:for="{{lists}}">
 
-                 <div style="display:block;font-size:15px;">煤价查询</div>
-        </view>
-        <view class="weui-flex__item" style="text-align:center;">
-                 <image id='兰炭' bindtap='gotoDetail' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkda.png"></image>
-
-                 <div style="display:block;font-size:15px;">兰炭价查询</div>
-        </view>
-        <view class="weui-flex__item" style="text-align:center;">
-                 <image id='运输' bindtap='gotoLogistics' style='padding-top:20px;width:60px;height:60px;' src="../images/icon_jkzx.png"></image>
-
-                 <div style="display:block;font-size:15px;">运费</div>
-        </view>
-    </view>
-
-    <view style='margin:30px 30px 20px 30px;font-size:18px;'>推荐煤炭</view>
-   
-     <!-- list -->
-  <view wx:if="{{prices.length > 0}}" style='padding:12px;' class="weui-cells weui-cells_after-title" wx:for="{{prices}}">
-
-    <view bindtap='gotoDetailPage' data-item="{{item}}">
+    <view bindtap='gotoDetail' data-item="{{item}}">
       <view class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder" style='font-weight:bold;'>{{item.factoryName}}</view>
@@ -65,5 +42,30 @@
       </view>
     </view>
 
+    <view wx:if="{{factoryType == '兰炭'}}" class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder">
+          挥{{item.coke_huifafen}}
+        </view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">水{{item.coke_quanshui}}</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">灰{{item.coke_huifen}}</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">硫{{item.coke_hanliu}}</view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">碳{{item.coke_gudingtan}}</view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{lists.length == 0}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
   </view>
 </view>

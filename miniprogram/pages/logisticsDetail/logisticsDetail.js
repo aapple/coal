@@ -7,7 +7,7 @@ Page({
     factory: {}
   },
   onLoad: function (options) {
-    
+
     // 初始化数据
     var item = JSON.parse(options.data)
 
@@ -16,12 +16,12 @@ Page({
     });
 
     this.getFactoryDetail();
-  },    
+  },
   getFactoryDetail: function () {
     var that = this;
     wx.request({
       url: 'http://localhost:8089/factory/query',
-      data: { "factoryName": this.data.detail.factoryName},
+      data: { "factoryName": this.data.detail.factoryName },
       method: "POST",
       header: {
         'content-type': 'application/json' // 默认值
@@ -32,11 +32,11 @@ Page({
         });
       }
     })
- 
+
   },
   gotoCall() {
     wx.makePhoneCall({
       phoneNumber: this.data.factory.sallerPhone
-    }) 
+    })
   }
 })

@@ -19,14 +19,20 @@ Page({
     this.setData({
       factoryType: options.data
     })
-  },
-  onShow: function () {
+
+    if (options.data == '兰炭'){
+      this.setData({
+        tabs: ["大料", "小料", "中料", "焦面"],
+        productType: "大料"
+      })
+    }
+
     var that = this;
 
     // 查询煤价
     var params = this.getQueryParams();
     this.getProductPriceList(params);
-    
+
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -39,7 +45,7 @@ Page({
   getProductPriceList: function(data) {
     var that = this;
     wx.request({
-      url: 'https://coalapp.smmeitan.cn/coalPrice/query',
+      url: 'http://localhost:8089/coalPrice/query',
       data: data,
       method: "POST",
       header: {
@@ -68,7 +74,7 @@ Page({
 
     var params = {
       productType: this.data.productType,
-      factory: this.data.factoryType
+      factoryType: this.data.factoryType
     };
 
     return params;

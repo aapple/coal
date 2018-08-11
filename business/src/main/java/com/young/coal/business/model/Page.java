@@ -22,7 +22,7 @@ public class Page {
 
     private Integer total;
 
-    private String userName;
+    private String queryUserName;
 
     private String queryType;
 

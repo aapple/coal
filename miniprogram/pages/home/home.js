@@ -6,7 +6,6 @@ Page({
    */
   data: {
     prices: [],
-    productType: "面煤",
     factoryType: "煤炭"
   },
 
@@ -15,7 +14,9 @@ Page({
    */
   onLoad: function (options) {
     // 查询煤价
-    var params = {};
+    var params = {
+      factoryType: this.data.factoryType
+    };
     this.getProductPriceList(params);
   },
   getProductPriceList: function (data) {
@@ -87,6 +88,11 @@ Page({
   gotoDetail: function (e) {
     wx.navigateTo({
       url: '/pages/index/index?data=' + e.currentTarget.id
+    })
+  },
+  gotoLogistics: function (e) {
+    wx.navigateTo({
+      url: '/pages/logistics/logistics?data=' + e.currentTarget.id
     })
   },
 
