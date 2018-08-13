@@ -33,9 +33,9 @@ public class Logistics extends Page{
     //1.在产 0.停产
     private Integer state;
 
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:SS")
+    @JsonFormat(timezone = "GMT+8", pattern = "MM-dd")
     private Date updateDate;
 
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:SS")
+    @JsonFormat(timezone = "GMT+8", pattern = "MM-dd")
     private Date createDate;
 }

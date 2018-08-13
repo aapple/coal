@@ -9,60 +9,39 @@
     <view bindtap='gotoDetail' data-item="{{item}}">
       <view class="weui-flex">
         <view class="weui-flex__item">
-          <view class="placeholder" style='font-weight:bold;'>{{item.factoryName}}</view>
+          <view class="placeholder">出发地</view>
+        </view>
+        <view class="weui-flex__item" style='text-align:center;'>
+          <view style="color:red;">￥{{item.price}}</view>
         </view>
         <view style='text-align:right;' class="weui-flex__item">
-          <view class="placeholder">{{item.updateDate}}</view>
+          <view class="placeholder">目的地</view>
         </view>
       </view>
 
-      <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
-        价格：
-        <span style="color:red;">￥{{item.price}}</span>
+      <view class="weui-flex" style='padding-top:10px;'>
+        <view class="weui-flex__item">
+          <view class="placeholder" style='font-weight:bold;'>{{item.start}}</view>
+        </view>
+        <view class="weui-flex__item" style='text-align:center;'>
+          <view>----></view>
+        </view>
+        <view style='text-align:right;' class="weui-flex__item">
+          <view class="placeholder" style='font-weight:bold;'>{{item.end}}</view>
+        </view>
       </view>
 
-      <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">
-        <view class="weui-flex__item">
-          <view class="placeholder">
-            热{{item.coal_fareliang}}
-          </view>
-        </view>
-        <view class="weui-flex__item">
-          <view class="placeholder">水{{item.coal_quanshuifen}}</view>
-        </view>
-        <view class="weui-flex__item">
-          <view class="placeholder">灰{{item.coal_huifen}}</view>
-        </view>
-        <view class="weui-flex__item">
-          <view class="placeholder">硫{{item.coal_liufen}}</view>
-        </view>
-        <view class="weui-flex__item">
-          <view class="placeholder">挥{{item.coal_huifafen}}</view>
-        </view>
-      </view>
-    </view>
 
-    <view wx:if="{{factoryType == '兰炭'}}" class="weui-flex">
-      <view class="weui-flex__item">
-        <view class="placeholder">
-          挥{{item.coke_huifafen}}
+      <view class="weui-flex" style='padding-top:10px;font-size:14px;'>
+        <view class="weui-flex__item">
+          <view class="placeholder">{{item.factoryName}}</view>
+        </view>
+        <view style='text-align:right;' class="weui-flex__item">
+          <view class="placeholder">{{item.updateDate}}发布</view>
         </view>
       </view>
-      <view class="weui-flex__item">
-        <view class="placeholder">水{{item.coke_quanshui}}</view>
-      </view>
-      <view class="weui-flex__item">
-        <view class="placeholder">灰{{item.coke_huifen}}</view>
-      </view>
-      <view class="weui-flex__item">
-        <view class="placeholder">硫{{item.coke_hanliu}}</view>
-      </view>
-      <view class="weui-flex__item">
-        <view class="placeholder">碳{{item.coke_gudingtan}}</view>
-      </view>
-    </view>
 
-
+    </view> 
   </view>
 
   <view class="weui-loadmore weui-loadmore_line" wx:if="{{lists.length == 0}}">

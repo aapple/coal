@@ -22,7 +22,7 @@ Page({
   getProductPriceList: function (data) {
     var that = this;
     wx.request({
-      url: 'http://localhost:8089/coalPrice/query',
+      url: 'https://coalapp.smmeitan.cn/coalPrice/query',
       data: data,
       method: "POST",
       header: {

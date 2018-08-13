@@ -9,7 +9,7 @@ Page({
   getList: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:8089/logistics/query',
+      url: 'https://coalapp.smmeitan.cn/logistics/query',
       data: {},
       method: "POST",
       header: {
@@ -27,5 +27,5 @@ Page({
     wx.navigateTo({
       url: '/pages/logisticsDetail/logisticsDetail?data=' + JSON.stringify(e.currentTarget.dataset.item)
     })
-  }
+  } 
 })

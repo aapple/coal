@@ -20,7 +20,7 @@ Page({
   getFactoryDetail: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:8089/factory/query',
+      url: 'https://coalapp.smmeitan.cn/factory/query',
       data: { "factoryName": this.data.detail.factoryName },
       method: "POST",
       header: {
