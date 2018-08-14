@@ -1,6 +1,6 @@
 package com.young.coal.business.service;
 
-import com.young.coal.business.model.CoalPrice;
+import com.young.coal.business.common.utils.RequestUtils;
 import com.young.coal.business.model.Factory;
 import com.young.coal.business.model.ResponseData;
 import org.apache.commons.lang3.StringUtils;
@@ -63,5 +63,16 @@ public class FactoryService {
         Query query = new Query(Criteria.where("factoryName").is(factory.getFactoryName()));
 
         mongoTemplate.upsert(query, update, Factory.class);
+    }
+
+    public void queryByUserName() {
+
+        String accessToken = RequestUtils.getAccessToken();
+
+        if ("super_admin".equals(accessToken)){
+            return;
+        }
+
+
     }
 }

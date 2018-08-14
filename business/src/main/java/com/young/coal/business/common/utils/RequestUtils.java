@@ -35,4 +35,11 @@ public class RequestUtils {
         }
         return null;
     }
+
+    public static String getAccessToken(){
+
+        HttpServletRequest request =  ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String accessToken = request.getHeader("x-access-token");
+        return accessToken;
+    }
 }
