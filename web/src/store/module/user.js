@@ -37,7 +37,7 @@ export default {
           password
         }).then(res => {
           const data = res.data
-          commit('setToken', "super_admin");
+          commit('setToken', userName);
           commit('setAvator', 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png')
           commit('setUserName', 'super_admin')
           commit('setUserId',  '1')
