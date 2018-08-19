@@ -35,6 +35,10 @@ public class LogisticsService {
             query.addCriteria(Criteria.where("factoryName").regex(logistics.getFactoryName()));
         }
 
+        if (StringUtils.isNotEmpty(logistics.getStart())){
+            query.addCriteria(Criteria.where("start").regex(logistics.getStart()).orOperator(Criteria.where("end").regex(logistics.getEnd())));
+        }
+
         Pageable pageable = new PageRequest(logistics.getPage(), logistics.getPageSize());
         query.with(pageable);
         query.with(new Sort(new Sort.Order(Sort.Direction.DESC,"createDate")));

@@ -4,9 +4,9 @@ var sliderWidth = 60;
 Page({
   data: {
     inputShowed: false,
-    inputVal: "",
+    factoryName: "",
     prices: [],
-    tabs: ["面煤","块煤","籽煤","原煤","混煤","工程煤"],
+    tabs: ["面煤","块煤","籽煤","原煤","混煤"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
@@ -22,7 +22,7 @@ Page({
 
     if (options.data == '兰炭'){
       this.setData({
-        tabs: ["大料", "小料", "中料", "焦面"],
+        tabs: ["大料", "中料", "小料",  "焦面"],
         productType: "大料"
       })
     }
@@ -66,15 +66,15 @@ Page({
   },
   searchPrice: function () {
     
-    var params = this.getQueryParams();
-    params.factory = { name: this.data.inputVal };
+    var params = this.getQueryParams();;
     this.getProductPriceList(params); 
   },
   getQueryParams() {
 
     var params = {
       productType: this.data.productType,
-      factoryType: this.data.factoryType
+      factoryType: this.data.factoryType,
+      factoryName: this.data.factoryName
     };
 
     return params;
@@ -82,7 +82,7 @@ Page({
   },
   clearInput: function () {
     this.setData({
-      inputVal: ""
+      factoryName: ""
     });
 
     var params = this.getQueryParams();
@@ -90,7 +90,7 @@ Page({
   },
   inputTyping: function (e) {
     this.setData({
-      inputVal: e.detail.value
+      factoryName: e.detail.value
     });
   },
   tabClick: function (e) {

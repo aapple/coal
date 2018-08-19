@@ -1,4 +1,3 @@
-
 <wxs module="filter" src="../../utils/date.wxs"></wxs>
 
 <!--logs.wxml-->
@@ -10,6 +9,14 @@
       </view>
       <view class="weui-cell__bd">
         <input value='{{detail.productType}}' class="weui-input" disabled="true" />
+      </view>
+    </view>
+    <view wx:if="{{detail.productTypeDetail != null}}" class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">细分种类</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input value='{{detail.productTypeDetail}}' class="weui-input" disabled="true" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -25,7 +32,7 @@
         <view class="weui-label">价格类型</view>
       </view>
       <view class="weui-cell__bd">
-        <input value='二票价' class="weui-input" disabled="true" />
+        <input value='含税价' class="weui-input" disabled="true" />
       </view>
     </view>
     <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">
