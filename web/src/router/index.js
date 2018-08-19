@@ -34,7 +34,12 @@ router.beforeEach((to, from, next) => {
     //   if (canTurnTo(to.name, user.access, routes)) next() // 有权限，可访问
     //   else next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
     // })
-    next()
+    if (token != "super_admin" && (to.name === 'userList_page' || to.name === 'factoryList_page')){
+      next({ replace: true, name: 'error_401' })
+    } else {
+      next()
+    }
+
   }
 })
 
