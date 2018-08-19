@@ -3,7 +3,6 @@ package com.young.coal.business.service;
 import com.young.coal.business.common.utils.RequestUtils;
 import com.young.coal.business.model.CoalPrice;
 import com.young.coal.business.model.ResponseData;
-import com.young.coal.business.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -17,13 +16,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by yaobin on 2017/12/4.
  */
 @Service
 public class CoalPriceService {
+
+    @Autowired
+    FactoryService factoryService;
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -34,6 +35,14 @@ public class CoalPriceService {
 
         if (StringUtils.isNotEmpty(coalPrice.getFactoryName())){
             query.addCriteria(Criteria.where("factoryName").regex(coalPrice.getFactoryName()));
+        } else {
+            String userName = RequestUtils.getAccessToken();
+            if (StringUtils.isNotEmpty(userName)){
+                List<String> factoryNames = factoryService.queryFactoryByUserName(coalPrice.getFactoryType(), userName);
+                if (factoryNames != null){
+                    query.addCriteria(Criteria.where("factoryName").in(factoryNames));
+                }
+            }
         }
 
         if (StringUtils.isNotEmpty(coalPrice.getFactoryType())){

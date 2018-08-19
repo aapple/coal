@@ -3,6 +3,7 @@ package com.young.coal.business.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import java.util.List;
 
 /**
  * Created by yaobin on 2017/11/8.
@@ -25,6 +26,8 @@ public class Page {
     private String queryUserName;
 
     private String queryType;
+
+    private List<String> factoryNames;
 
     public Integer getPage(){
         if(this.page == null){

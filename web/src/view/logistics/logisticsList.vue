@@ -2,7 +2,7 @@
   <div>
     <Card>
       <tables ref="tables"  search-place="top" v-model="tableData" :columns="columns"/>
-      <Button style="margin: 10px 0;" type="primary" @click="newProductType">新增物流单</Button>
+      <Button v-if="factoryNames.length > 0" style="margin: 10px 0;" type="primary" @click="newProductType">新增物流单</Button>
     </Card>
   </div>
 </template>
@@ -10,6 +10,8 @@
 <script>
   import Tables from '_c/tables'
   import { queryLogisticsList } from '@/api/coal'
+  import { queryFactoryNames } from '@/api/coal'
+
   export default {
     name: 'logisticsList_page',
     components: {
@@ -17,6 +19,7 @@
     },
     data () {
       return {
+        factoryNames: [],
         columns: [
           {title: '物流部名称', key: 'factoryName'},
           {title: '出发地', key: 'start'},
@@ -54,15 +57,18 @@
     },
     methods: {
       handleUpdate (params) {
+        params.factoryNames = this.factoryNames;
         this.$router.push({
           name: 'logistics_page',
           params: params
         })
       },
       newProductType () {
+        var params = {};
+        params.factoryNames = this.factoryNames;
         this.$router.push({
           name: 'logistics_page',
-          params: {}
+          params: params
         })
       }
     },
@@ -75,6 +81,12 @@
 
       })
 
+      queryFactoryNames({factoryType:"物流"}).then(res => {
+        this.factoryNames = res.data;
+        resolve()
+      }).catch(err => {
+
+      })
     }
   }
 </script>

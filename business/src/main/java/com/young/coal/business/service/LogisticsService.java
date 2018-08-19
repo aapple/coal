@@ -1,5 +1,6 @@
 package com.young.coal.business.service;
 
+import com.young.coal.business.common.utils.RequestUtils;
 import com.young.coal.business.model.CoalPrice;
 import com.young.coal.business.model.Logistics;
 import com.young.coal.business.model.ResponseData;
@@ -25,14 +26,21 @@ import java.util.UUID;
 public class LogisticsService {
 
     @Autowired
+    FactoryService factoryService;
+
+    @Autowired
     MongoTemplate mongoTemplate;
 
     public ResponseData query(Logistics logistics) {
 
         Query query = new Query();
 
-        if (StringUtils.isNotEmpty(logistics.getFactoryName())){
-            query.addCriteria(Criteria.where("factoryName").regex(logistics.getFactoryName()));
+        String userName = RequestUtils.getAccessToken();
+        if (StringUtils.isNotEmpty(userName)){
+            List<String> factoryNames = factoryService.queryFactoryByUserName("物流", userName);
+            if (factoryNames != null){
+                query.addCriteria(Criteria.where("factoryName").in(factoryNames));
+            }
         }
 
         if (StringUtils.isNotEmpty(logistics.getStart())){

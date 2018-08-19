@@ -3,14 +3,16 @@
     <Row>
       <Col span="2" class="ivu_title">焦化厂名称</Col>
       <Col>
-        <Input v-model="factoryName" clearable style="width: 200px"></Input>
+      <Select :disabled='factoryName != undefined' v-model="factoryName" style="width:200px">
+        <Option v-for="item in factoryNames" :value="item" :key="item">{{ item }}</Option>
+      </Select>
       </Col>
     </Row>
     <br>
     <Row>
       <Col span="2" class="ivu_title">兰炭种类</Col>
       <Col>
-        <Select v-model="productType" style="width:200px">
+        <Select :disabled='factoryName != undefined' v-model="productType" style="width:200px">
           <Option value="大料">大料</Option>
           <Option value="中料">中料</Option>
           <Option value="小料">小料</Option>
@@ -88,6 +90,7 @@ export default {
   data () {
     return {
       factoryName: this.$route.params.factoryName,
+      factoryNames: this.$route.params.factoryNames,
       factoryType: '兰炭',
       productType: this.$route.params.productType,
       state: this.$route.params.state,

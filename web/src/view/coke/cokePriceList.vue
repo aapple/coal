@@ -2,7 +2,7 @@
   <div>
     <Card>
       <tables ref="tables"  search-place="top" v-model="tableData" :columns="columns"/>
-      <Button style="margin: 10px 0;" type="primary" @click="newProductType">新增兰炭种类</Button>
+      <Button v-if="factoryNames.length > 0" style="margin: 10px 0;" type="primary" @click="newProductType">新增兰炭种类</Button>
     </Card>
   </div>
 </template>
@@ -10,6 +10,7 @@
 <script>
   import Tables from '_c/tables'
   import { queryCoalPriceList } from '@/api/coal'
+  import { queryFactoryNames } from '@/api/coal'
   export default {
     name: 'cokePriceList_page',
     components: {
@@ -17,6 +18,7 @@
     },
     data () {
       return {
+        factoryNames: [],
         columns: [
           {title: '焦化厂名称', key: 'factoryName'},
           {title: '兰炭种类', key: 'productType'},
@@ -52,15 +54,18 @@
     },
     methods: {
       handleUpdate (params) {
+        params.factoryNames = this.factoryNames;
         this.$router.push({
           name: 'cokePrice_page',
           params: params
         })
       },
       newProductType () {
+        var params = {};
+        params.factoryNames = this.factoryNames;
         this.$router.push({
           name: 'cokePrice_page',
-          params: {}
+          params: params
         })
       }
     },
@@ -70,6 +75,13 @@
       };
       queryCoalPriceList(data).then(res => {
         this.tableData = res.data.data;
+        resolve()
+      }).catch(err => {
+
+      })
+
+      queryFactoryNames(data).then(res => {
+        this.factoryNames = res.data;
         resolve()
       }).catch(err => {
 

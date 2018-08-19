@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,14 +66,46 @@ public class FactoryService {
         mongoTemplate.upsert(query, update, Factory.class);
     }
 
-    public void queryByUserName() {
+    public List<String> queryFactoryByUserName(String factoryType, String userName) {
 
-        String accessToken = RequestUtils.getAccessToken();
-
-        if ("super_admin".equals(accessToken)){
-            return;
+        if ("super_admin".equals(userName)){
+            return null;
         }
 
+        Query query = new Query();
+        query.addCriteria(Criteria.where("userName").is(userName));
+        query.addCriteria(Criteria.where("factoryType").is(factoryType));
 
+        List<Factory> factories = mongoTemplate.find(query, Factory.class);
+
+        List<String> factoryNames = new ArrayList<>();
+
+        for (Factory factory : factories) {
+            factoryNames.add(factory.getFactoryName());
+        }
+
+        return factoryNames;
+    }
+
+    public List<String> queryFactorys(String factoryType) {
+
+        String userName = RequestUtils.getAccessToken();
+
+        Query query = new Query();
+        if (!"super_admin".equals(userName)){
+            query.addCriteria(Criteria.where("userName").is(userName));
+
+        }
+        query.addCriteria(Criteria.where("factoryType").is(factoryType));
+
+        List<Factory> factories = mongoTemplate.find(query, Factory.class);
+
+        List<String> factoryNames = new ArrayList<>();
+
+        for (Factory factory : factories) {
+            factoryNames.add(factory.getFactoryName());
+        }
+
+        return factoryNames;
     }
 }

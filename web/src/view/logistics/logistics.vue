@@ -3,7 +3,9 @@
     <Row>
       <Col span="2" class="ivu_title">物流部名称</Col>
       <Col>
-        <Input v-model="factoryName" clearable style="width: 200px"></Input>
+      <Select :disabled='factoryName != undefined' v-model="factoryName" style="width:200px">
+        <Option v-for="item in factoryNames" :value="item" :key="item">{{ item }}</Option>
+      </Select>
       </Col>
     </Row>
     <br>
@@ -67,6 +69,7 @@ export default {
     return {
       logisticsId: this.$route.params.logisticsId,
       factoryName: this.$route.params.factoryName,
+      factoryNames: this.$route.params.factoryNames,
       start: this.$route.params.start,
       end: this.$route.params.end,
       count: this.$route.params.count,

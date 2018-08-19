@@ -15,7 +15,7 @@ import java.util.Date;
 public class Factory extends Page{
 
     private String factoryName;
-    private String factoryType; // 煤炭，兰炭
+    private String factoryType; // 煤炭，兰炭，物流
     private String userName; // 管理用户的Id
     private String sallerName; // 业务员名字
     private String sallerPhone; // 业务员联系电话

@@ -64,3 +64,11 @@ export const updateLogistics = (data) => {
     method: 'post'
   })
 }
+
+export const queryFactoryNames = (data) => {
+  return axios.request({
+    url: 'factory/queryFactoryByUserName',
+    data,
+    method: 'post'
+  })
+}
