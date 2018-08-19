@@ -44,3 +44,91 @@ page{
     text-align: left;
     font-size: 14px;
 }
+
+@font-face {
+  font-family: 'iconfont';  /* project id 338168 */
+  src: url('//at.alicdn.com/t/font_338168_a2bo8u3hyzc40a4i.eot');
+  src: url('//at.alicdn.com/t/font_338168_a2bo8u3hyzc40a4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_338168_a2bo8u3hyzc40a4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_338168_a2bo8u3hyzc40a4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_338168_a2bo8u3hyzc40a4i.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:22px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-share:before { content: "\e669"; }
+
+.icon-xinwen:before { content: "\e600"; }
+
+.icon-gongchang:before { content: "\e618"; }
+
+.icon-youxiandianshi:before { content: "\e62f"; }
+
+.icon-zhuanzhanghuikuan:before { content: "\e630"; }
+
+.icon-meitan:before { content: "\e7e6"; }
+
+.icon-zhifubao:before { content: "\e736"; }
+
+.icon-wuliuxiaoxi:before { content: "\e61f"; }
+
+.icon-activity_fill:before { content: "\e6de"; }
+
+.icon-huancun:before { content: "\e63a"; }
+
+.icon-fuwu:before { content: "\e65a"; }
+
+.icon-shishilukuang:before { content: "\e628"; }
+
+.icon-shezhi:before { content: "\e601"; }
+
+.icon-yijianfankui:before { content: "\e602"; }
+
+.icon-guanyuwomen:before { content: "\e603"; }
+
+.icon-yonghuxieyi:before { content: "\e604"; }
+
+.icon-lantanjia:before { content: "\e605"; }
+
+.icon-daifajia:before { content: "\e606"; }
+
+.icon-shenghuofuwuleishujuguanli:before { content: "\e607"; }
+
+.icon-kuangfangjia:before { content: "\e608"; }
+
+.icon-meiyouquan:before { content: "\e609"; }
+
+.icon-jiaohuachangweihu:before { content: "\e60a"; }
+
+.icon-wodeziliao:before { content: "\e60b"; }
+
+.icon-wuliuweihu:before { content: "\e60c"; }
+
+.icon-xinxibuguanli:before { content: "\e60d"; }
+
+.icon-hui:before { content: "\e60e"; }
+
+.icon-hui1:before { content: "\e60f"; }
+
+.icon-liu:before { content: "\e610"; }
+
+.icon-re:before { content: "\e611"; }
+
+.icon-shui:before { content: "\e612"; }
+
+.icon-icon-test:before { content: "\e613"; }
+
+.icon-tan:before { content: "\e614"; }
+
+.icon-meijia:before { content: "\e615"; }
+
+.icon-lantanjia1:before { content: "\e616"; }
+
+.icon-wuliu:before { content: "\e617"; }
+

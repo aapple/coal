@@ -49,20 +49,31 @@
       <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder">
-            热{{item.coal_fareliang}}
+            <text class="iconfont icon-re" style='color:red;'></text>
+            {{item.coal_fareliang}}
           </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder">水{{item.coal_quanshuifen}}</view>
+          <view class="placeholder">
+            <text class="iconfont icon-shui" style='color:#0033CC;'></text>
+            {{item.coal_quanshuifen}}
+          </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder">灰{{item.coal_huifen}}</view>
+          <view class="placeholder">
+          <text class="iconfont icon-hui" style='color:grey;'></text>
+          {{item.coal_huifen}}
+          </view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder">硫{{item.coal_liufen}}</view>
+          <view class="placeholder">
+          <text class="iconfont icon-liu" style='color:#009900;'></text>
+          {{item.coal_liufen}}</view>
         </view>
         <view class="weui-flex__item">
-          <view class="placeholder">挥{{item.coal_huifafen}}</view>
+          <view class="placeholder">
+          <text class="iconfont icon-hui1" style='color:#6600CC;'></text>
+          {{item.coal_huifafen}}</view>
         </view>
       </view>
     </view>
@@ -70,20 +81,33 @@
     <view wx:if="{{factoryType == '兰炭'}}" class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder">
-          挥{{item.coke_huifafen}}
+          <text class="iconfont icon-hui1" style='color:#6600CC;'></text>
+          {{item.coke_huifafen}}
         </view>
       </view>
       <view class="weui-flex__item">
-        <view class="placeholder">水{{item.coke_quanshui}}</view>
+        <view class="placeholder">
+        <text class="iconfont icon-shui" style='color:#0033CC;'></text>
+        {{item.coke_quanshui}}
+        </view>
       </view>
       <view class="weui-flex__item">
-        <view class="placeholder">灰{{item.coke_huifen}}</view>
+        <view class="placeholder">
+        <text class="iconfont icon-hui" style='color:grey;'></text>
+        {{item.coke_huifen}}
+        </view>
       </view>
       <view class="weui-flex__item">
-        <view class="placeholder">硫{{item.coke_hanliu}}</view>
+        <view class="placeholder">
+        <text class="iconfont icon-liu" style='color:#009900;'></text>
+        {{item.coke_hanliu}}
+        </view>
       </view>
       <view class="weui-flex__item">
-        <view class="placeholder">碳{{item.coke_gudingtan}}</view>
+        <view class="placeholder">
+        <text class="iconfont icon-tan" style='color:black;'></text>
+        {{item.coke_gudingtan}}
+        </view>
       </view>
     </view>
 

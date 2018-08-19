@@ -38,7 +38,9 @@
           <view class="placeholder" style='font-weight:bold;'>{{item.start}}</view>
         </view>
         <view class="weui-flex__item" style='text-align:center;'>
-          <view>----></view>
+          <view>
+          <text class="iconfont icon-icon-test" style='color:green;font-size:30px;'></text>
+          </view>
         </view>
         <view style='text-align:right;' class="weui-flex__item">
           <view class="placeholder" style='font-weight:bold;'>{{item.end}}</view>
