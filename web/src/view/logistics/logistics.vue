@@ -3,7 +3,7 @@
     <Row>
       <Col span="2" class="ivu_title">物流部名称</Col>
       <Col>
-      <Select :disabled='factoryName != undefined' v-model="factoryName" style="width:200px">
+      <Select :disabled='updateFlag' v-model="factoryName" style="width:200px">
         <Option v-for="item in factoryNames" :value="item" :key="item">{{ item }}</Option>
       </Select>
       </Col>
@@ -67,6 +67,7 @@ export default {
   },
   data () {
     return {
+      updateFlag: this.$route.params.updateFlag,
       logisticsId: this.$route.params.logisticsId,
       factoryName: this.$route.params.factoryName,
       factoryNames: this.$route.params.factoryNames,

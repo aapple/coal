@@ -56,6 +56,7 @@
     methods: {
       handleUpdate (params) {
         params.factoryNames = this.factoryNames;
+        params.updateFlag = true;
         this.$router.push({
           name: 'coalPrice_page',
           params: params
@@ -64,6 +65,7 @@
       newProductType () {
         var params = {};
         params.factoryNames = this.factoryNames;
+        params.updateFlag = false;
         this.$router.push({
           name: 'coalPrice_page',
           params: params

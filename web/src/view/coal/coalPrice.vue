@@ -3,7 +3,7 @@
     <Row>
       <Col span="2" class="ivu_title">煤矿名称</Col>
       <Col>
-        <Select :disabled='factoryName != undefined' v-model="factoryName" style="width:200px">
+        <Select :disabled='updateFlag' v-model="factoryName" style="width:200px">
           <Option v-for="item in factoryNames" :value="item" :key="item">{{ item }}</Option>
         </Select>
       </Col>
@@ -12,7 +12,7 @@
     <Row>
       <Col span="2" class="ivu_title">煤炭种类</Col>
       <Col>
-        <Select :disabled='factoryName != undefined' v-model="productType" style="width:200px" @on-change="productTypeChange">
+        <Select :disabled='updateFlag' v-model="productType" style="width:200px" @on-change="productTypeChange">
           <Option value="面煤">面煤</Option>
           <Option value="块煤">块煤</Option>
           <Option value="籽煤">籽煤</Option>
@@ -26,7 +26,7 @@
     <Row>
       <Col span="2" class="ivu_title">煤炭种类细分</Col>
       <Col>
-      <Select :disabled='factoryName != undefined' v-model="productTypeDetail" style="width:200px">
+      <Select :disabled='updateFlag' v-model="productTypeDetail" style="width:200px">
         <Option v-for="item in productTypeDetails" :value="item.value" :key="item.value">{{ item.label }}</Option>
       </Select>
       </Col>
@@ -35,7 +35,7 @@
     <Row>
       <Col span="2" class="ivu_title">是否水洗</Col>
       <Col>
-        <Select :disabled='factoryName != undefined' v-model="coalWashing" style="width:200px">
+        <Select :disabled='updateFlag' v-model="coalWashing" style="width:200px">
           <Option :value="1" >是</Option>
           <Option :value="0" >否</Option>
         </Select>
@@ -45,7 +45,7 @@
     <Row>
       <Col span="2" class="ivu_title">是否过筛</Col>
       <Col>
-      <Select :disabled='factoryName != undefined' v-model="graded" style="width:200px">
+      <Select :disabled='updateFlag' v-model="graded" style="width:200px">
         <Option :value="1" >是</Option>
         <Option :value="0" >否</Option>
       </Select>
@@ -120,6 +120,7 @@ export default {
   },
   data () {
     return {
+      updateFlag: this.$route.params.updateFlag,
       factoryName: this.$route.params.factoryName,
       factoryNames: this.$route.params.factoryNames,
       factoryType: '煤炭',
