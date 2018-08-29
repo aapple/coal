@@ -35,7 +35,7 @@
       <view class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder" style='font-weight:bold;'>
-          {{item.factoryName}}<span wx:if="{{detail.productTypeDetail != null}}">（{{detail.productTypeDetail}}）</span>
+          {{item.factoryName}}<span wx:if="{{item.productTypeDetail != null}}">（{{item.productTypeDetail}}）</span>
           </view>
         </view>
         <view style='text-align:right;' class="weui-flex__item">
@@ -44,10 +44,14 @@
       </view>
 
       <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
-        <view wx:if="{{detail.price != null}}">两票价：<span style="color:red;">￥{{item.price}}</span></view>
-        <view wx:if="{{detail.price == null}}">两票价：<span style="color:red;">——</span></view>
-        <view wx:if="{{detail.onePrice != null}}">一票价：<span style="color:red;">￥{{item.onePrice}}</span></view>
-        <view wx:if="{{detail.onePrice == null}}">一票价：<span style="color:red;">——</span></view>
+        <view>
+        <span wx:if="{{item.price != null}}">两票价：<span style="color:red;">￥{{item.price}}</span></span>
+        <span wx:if="{{item.price == null}}">两票价：<span>——</span></span>
+
+        <span style="padding-left:40px;" wx:if="{{item.onePrice != null}}">一票价：<span style="color:red;">￥{{item.onePrice}}</span></span>
+        <span style="padding-left:40px;" wx:if="{{item.onePrice == null}}">一票价：<span >——</span></span>
+        </view>
+
       </view>
 
       <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">

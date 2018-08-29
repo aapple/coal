@@ -24,7 +24,9 @@
         <view class="weui-label">两票价</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='color:red;' value='{{detail.price}}元/吨' class="weui-input" disabled="true"/>
+        <input wx:if="{{detail.price}}" style='color:red;' value='{{detail.price}}元/吨' class="weui-input" disabled="true"/>
+
+        <input wx:if="{{!detail.price}}" value='——' class="weui-input" disabled="true"/>
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -32,7 +34,9 @@
         <view class="weui-label">一票价</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='color:red;' value='{{detail.onePrice}}元/吨' class="weui-input" disabled="true"/>
+        <input wx:if="{{detail.onePrice}}" style='color:red;' value='{{detail.onePrice}}元/吨' class="weui-input" disabled="true"/>
+
+        <input wx:if="{{!detail.onePrice}}" value='——' class="weui-input" disabled="true"/>
       </view>
     </view>
     <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">
