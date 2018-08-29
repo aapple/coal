@@ -21,7 +21,7 @@
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-        <view class="weui-label">产品价格</view>
+        <view class="weui-label">含税价</view>
       </view>
       <view class="weui-cell__bd">
         <input style='color:red;' value='{{detail.price}}元/吨' class="weui-input" disabled="true"/>
@@ -29,10 +29,10 @@
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-        <view class="weui-label">价格类型</view>
+        <view class="weui-label">一票价</view>
       </view>
       <view class="weui-cell__bd">
-        <input value='含税价' class="weui-input" disabled="true" />
+        <input style='color:red;' value='{{detail.onePrice}}元/吨' class="weui-input" disabled="true"/>
       </view>
     </view>
     <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">

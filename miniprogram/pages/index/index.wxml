@@ -34,7 +34,9 @@
     <view bindtap='gotoDetail' data-item="{{item}}">
       <view class="weui-flex">
         <view class="weui-flex__item">
-          <view class="placeholder" style='font-weight:bold;'>{{item.factoryName}}</view>
+          <view class="placeholder" style='font-weight:bold;'>
+          {{item.factoryName}}<span wx:if="{{detail.productTypeDetail != null}}">（{{detail.productTypeDetail}}）</span>
+          </view>
         </view>
         <view style='text-align:right;' class="weui-flex__item">
           <view class="placeholder">{{item.updateDate}}</view>
@@ -42,8 +44,10 @@
       </view>
 
       <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
-        价格：
-        <span style="color:red;">￥{{item.price}}</span>
+        <view wx:if="{{detail.onePrice != null}}">一票价：<span style="color:red;">￥{{item.onePrice}}</span></view>
+        <view wx:if="{{detail.onePrice == null}}">一票价：<span style="color:red;">——</span></view>
+        <view wx:if="{{detail.price != null}}">含税价：<span style="color:red;">￥{{item.price}}</span></view>
+        <view wx:if="{{detail.price == null}}">含税价：<span style="color:red;">——</span></view>
       </view>
 
       <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">

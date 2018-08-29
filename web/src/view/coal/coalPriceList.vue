@@ -23,7 +23,8 @@
           {title: '煤矿名称', key: 'factoryName'},
           {title: '煤炭种类', key: 'productType'},
           {title: '煤炭种类细分', key: 'productTypeDetail'},
-          {title: '价格', key: 'price'},
+          {title: '含税价', key: 'price'},
+          {title: '一票价', key: 'onePrice'},
           {title: '更新时间', key: 'updateDate'},
           {
             title: '操作',

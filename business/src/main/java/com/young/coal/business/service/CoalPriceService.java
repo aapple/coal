@@ -76,6 +76,7 @@ public class CoalPriceService {
         update.set("productType", coalPrice.getProductType());
         update.set("productTypeDetail", coalPrice.getProductTypeDetail());
         update.set("price", coalPrice.getPrice());
+        update.set("onePrice", coalPrice.getOnePrice());
         update.set("coalWashing", coalPrice.getCoalWashing());
         update.set("graded", coalPrice.getGraded());
         update.set("state", coalPrice.getState());

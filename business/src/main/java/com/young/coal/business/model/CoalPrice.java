@@ -26,7 +26,9 @@ public class CoalPrice extends Page{
 
     private String productTypeDetail;
 
-    private BigDecimal price;
+    private BigDecimal price; // 含税价
+
+    private BigDecimal onePrice; // 一票价
 
     private BigDecimal priceDiff;
 

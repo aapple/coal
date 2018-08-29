@@ -52,6 +52,7 @@ Page({
         'content-type': 'application/json' // 默认值
       }, 
       success: function (res) {
+
         that.setData({
           prices: res.data.data.data
         });

@@ -32,9 +32,16 @@
     </Row>
     <br>
     <Row>
-      <Col span="2" class="ivu_title">价格</Col>
+      <Col span="2" class="ivu_title">含税价</Col>
       <Col>
       <Input v-model="price" clearable style="width: 200px"></Input>
+      </Col>
+    </Row>
+    <br>
+    <Row>
+      <Col span="2" class="ivu_title">一票价</Col>
+      <Col>
+      <Input v-model="onePrice" clearable style="width: 200px"></Input>
       </Col>
     </Row>
     <br>
@@ -96,6 +103,7 @@ export default {
       productType: this.$route.params.productType,
       state: this.$route.params.state,
       price: this.$route.params.price,
+      onePrice: this.$route.params.onePrice,
       coke_hanliu: this.$route.params.coke_hanliu,
       coke_gudingtan: this.$route.params.coke_gudingtan,
       coke_huifafen: this.$route.params.coke_huifafen,
@@ -112,6 +120,7 @@ export default {
         productType: this.productType,
         state: this.state,
         price: this.price,
+        onePrice: this.onePrice,
         coke_hanliu: this.coke_hanliu,
         coke_gudingtan: this.coke_gudingtan,
         coke_huifafen: this.coke_huifafen,

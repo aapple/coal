@@ -63,9 +63,16 @@
     </Row>
     <br>
     <Row>
-      <Col span="2" class="ivu_title">价格</Col>
+      <Col span="2" class="ivu_title">含税价</Col>
       <Col>
       <Input v-model="price" clearable style="width: 200px"></Input>
+      </Col>
+    </Row>
+    <br>
+    <Row>
+      <Col span="2" class="ivu_title">一票价</Col>
+      <Col>
+      <Input v-model="onePrice" clearable style="width: 200px"></Input>
       </Col>
     </Row>
     <br>
@@ -131,6 +138,7 @@ export default {
       graded: this.$route.params.graded,
       state: this.$route.params.state,
       price: this.$route.params.price,
+      onePrice: this.$route.params.onePrice,
       coal_fareliang: this.$route.params.coal_fareliang,
       coal_quanshuifen: this.$route.params.coal_quanshuifen,
       coal_huifafen: this.$route.params.coal_huifafen,
@@ -203,6 +211,7 @@ export default {
         state: this.state,
         productType: this.productType,
         price: this.price,
+        onePrice: this.onePrice,
         coal_fareliang: this.coal_fareliang,
         coal_quanshuifen: this.coal_quanshuifen,
         coal_huifafen: this.coal_huifafen,
