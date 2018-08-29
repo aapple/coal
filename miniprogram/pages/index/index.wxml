@@ -44,10 +44,10 @@
       </view>
 
       <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
+        <view wx:if="{{detail.price != null}}">两票价：<span style="color:red;">￥{{item.price}}</span></view>
+        <view wx:if="{{detail.price == null}}">两票价：<span style="color:red;">——</span></view>
         <view wx:if="{{detail.onePrice != null}}">一票价：<span style="color:red;">￥{{item.onePrice}}</span></view>
         <view wx:if="{{detail.onePrice == null}}">一票价：<span style="color:red;">——</span></view>
-        <view wx:if="{{detail.price != null}}">含税价：<span style="color:red;">￥{{item.price}}</span></view>
-        <view wx:if="{{detail.price == null}}">含税价：<span style="color:red;">——</span></view>
       </view>
 
       <view style='font-size:16px;' wx:if="{{factoryType == '煤炭'}}" class="weui-flex">

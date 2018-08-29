@@ -22,7 +22,7 @@
         columns: [
           {title: '焦化厂名称', key: 'factoryName'},
           {title: '兰炭种类', key: 'productType'},
-          {title: '含税价', key: 'price'},
+          {title: '两票价', key: 'price'},
           {title: '一票价', key: 'onePrice'},
           {title: '更新时间', key: 'updateDate'},
           {

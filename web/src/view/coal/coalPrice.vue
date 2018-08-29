@@ -63,7 +63,7 @@
     </Row>
     <br>
     <Row>
-      <Col span="2" class="ivu_title">含税价</Col>
+      <Col span="2" class="ivu_title">两票价</Col>
       <Col>
       <Input v-model="price" clearable style="width: 200px"></Input>
       </Col>

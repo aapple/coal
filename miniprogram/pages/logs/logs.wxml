@@ -21,7 +21,7 @@
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-        <view class="weui-label">含税价</view>
+        <view class="weui-label">两票价</view>
       </view>
       <view class="weui-cell__bd">
         <input style='color:red;' value='{{detail.price}}元/吨' class="weui-input" disabled="true"/>
