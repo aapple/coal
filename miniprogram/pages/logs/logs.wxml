@@ -1,86 +1,76 @@
 <wxs module="filter" src="../../utils/date.wxs"></wxs>
 
 <!--logs.wxml-->
-<view style='padding:10px'>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">产品种类</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input value='{{detail.productType}}' class="weui-input" disabled="true" />
-      </view>
-    </view>
-    <view wx:if="{{detail.productTypeDetail != null}}" class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">细分种类</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input value='{{detail.productTypeDetail}}' class="weui-input" disabled="true" />
-      </view>
-    </view>
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">两票价</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input wx:if="{{detail.price}}" style='color:red;' value='{{detail.price}}元/吨' class="weui-input" disabled="true"/>
 
-        <input wx:if="{{!detail.price}}" value='——' class="weui-input" disabled="true"/>
-      </view>
+<view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">产品种类</view>
     </view>
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">一票价</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input wx:if="{{detail.onePrice}}" style='color:red;' value='{{detail.onePrice}}元/吨' class="weui-input" disabled="true"/>
-
-        <input wx:if="{{!detail.onePrice}}" value='——' class="weui-input" disabled="true"/>
-      </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.productType}}</view>
     </view>
-    <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">是否水洗</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input value="{{detail.coalWashing?'水洗':'不水洗'}}" class="weui-input" disabled="true" />
-      </view>
+  </view>
+  <view class="weui-flex" wx:if="{{detail.productTypeDetail != null}}">
+    <view class="weui-flex__item">
+      <view class="placeholder">细分种类</view>
     </view>
-    <view wx:if="{{detail.factoryType == '煤炭'}}" class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">是否过筛</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input value="{{detail.graded?'过筛':'不过筛'}}" class="weui-input" disabled="true" />
-      </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.productTypeDetail}}</view>
     </view>
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">变更幅度</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input value="{{detail.priceDiff>0?'涨': ''}}{{detail.priceDiff<0?'降': ''}}{{detail.priceDiff?detail.priceDiff+' 元/吨': '无'}}" class="weui-input" readonly="readonly" />
-      </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">两票价</view>
     </view>
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">更新时间</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input value='{{detail.updateDate}}' class="weui-input" disabled="true" />
-      </view>
+    <view class="weui-flex__item">
+      <view class="placeholder" wx:if="{{detail.price}}" style='color:red;'>{{detail.price}}元/吨</view>
+      <view class="placeholder" wx:if="{{!detail.price}}">——</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">一票价</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder" wx:if="{{detail.onePrice}}" style='color:red;'>{{detail.onePrice}}元/吨</view>
+      <view class="placeholder" wx:if="{{!detail.onePrice}}">——</view>
+    </view>
+  </view>
+  <view class="weui-flex" wx:if="{{detail.factoryType == '煤炭'}}">
+    <view class="weui-flex__item">
+      <view class="placeholder">是否水洗</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.coalWashing?'水洗':'不水洗'}}</view>
+    </view>
+  </view>
+  <view class="weui-flex" wx:if="{{detail.factoryType == '煤炭'}}">
+    <view class="weui-flex__item">
+      <view class="placeholder">是否过筛</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.graded?'过筛':'不过筛'}}</view>
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">变更幅度</view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">{{detail.priceDiff>0?'涨': ''}}{{detail.priceDiff<0?'降': ''}}{{detail.priceDiff?detail.priceDiff+' 元/吨': '无'}}</view>
     </view>
   </view>
 </view>
 
+
 <view class="icon-box" style='padding:10px 0 10px 50px;background-color:#fff;margin:0 10px 10px 10px'>
-  <icon type="success" size="70"></icon>
+  <icon class="iconfont icon-dianhua" style='font-size:70px;color:#08c406;'></icon>
   <view class="icon-box__ctn">
-    <view class="icon-box__title">{{detail.factorNname}}</view>
+    <view class="icon-box__title">{{factory.factorNname}}</view>
     <view>
-    <view class="icon-box__desc">联系人：{{factory.sallerName}}</view>
-    <view class="icon-box__desc">联系电话：
+    <view class="icon-box__desc" style='font-size:14px;'>联系人：{{factory.sallerName}}</view>
+    <view class="icon-box__desc" style='font-size:14px;'>联系电话：
     <span style="color:blue">{{factory.sallerPhone}}</span></view>
     </view>
 
