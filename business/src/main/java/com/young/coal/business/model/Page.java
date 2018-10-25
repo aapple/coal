@@ -39,7 +39,7 @@ public class Page {
 
     public Integer getPageSize(){
         if(this.pageSize == null){
-            this.pageSize = 50;
+            this.pageSize = 500;
         }
 
         return this.pageSize;
