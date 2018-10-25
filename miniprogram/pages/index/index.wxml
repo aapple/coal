@@ -38,9 +38,7 @@
           {{item.factoryName}}<span wx:if="{{item.productTypeDetail != null}}">（{{item.productTypeDetail}}）</span>
           </view>
         </view>
-        <view style='text-align:right;' class="weui-flex__item">
-          <view class="placeholder">{{item.updateDate}}</view>
-        </view>
+        
       </view>
 
       <view class="weui-cell__bd" style='padding-top:5px;padding-bottom:5px;'>
